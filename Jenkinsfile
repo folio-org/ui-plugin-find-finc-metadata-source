@@ -1,7 +1,10 @@
+@Library ('folio_jenkins_shared_libs') _
+
 buildNPM {
-  publishModDescriptor = false
-  npmDeploy = 'no'
+  publishModDescriptor = true
+  runRegression = false
   runLint = true
-  runSonarqube = true
+  runSonarqube = false
   runTest = false
+  runTestOptions = '--karma.singleRun --karma.browsers ChromeDocker --karma.reporters mocha junit --coverage'
 }
