@@ -2,67 +2,45 @@
   "name": "@folio/plugin-find-finc-metadata-source",
   "version": "1.0.0",
   "description": "Finder plugin for finc metadata sources",
-  "main": "src/index.js",
-  "repository": "",
+  "repository": "folio-org/ui-plugin-find-finc-metadata-source",
+  "publishConfig": {
+    "registry": "https://repository.folio.org/repository/npm-folio/"
+  },
   "license": "Apache-2.0",
   "engines": {
     "node": ">=6.0.0"
   },
+  "stripes": {
+    "type": "plugin",
+    "pluginType": "find-finc-metadata-source",
+    "displayName": "ui-plugin-find-finc-metadata-source.meta.title",
+    "okapiInterfaces": {
+      "finc-config/metadata-sources": "1.0"
+    }
+  },
   "scripts": {
-    "start": "stripes serve",
-    "build": "stripes build --output ./output",
     "test": "stripes test karma",
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@bigtest/interactor": "^0.8.1",
-    "@bigtest/mirage": "^0.0.1",
-    "@bigtest/mocha": "^0.5.1",
-    "@bigtest/react": "^0.1.2",
-    "@folio/eslint-config-stripes": "^3.2.1",
-    "@folio/stripes": "^2.1.0",
-    "@folio/stripes-cli": "^1.14.0 || ^1.10.0",
-    "@folio/stripes-core": "^3.0.0",
+    "@folio/eslint-config-stripes": "^4.2.0",
+    "@folio/stripes": "^2.11.0",
     "babel-eslint": "^9.0.0",
-    "babel-polyfill": "^6.26.0",
-    "chai": "^4.2.0",
     "eslint": "^5.6.0",
-    "mocha": "^5.2.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-intl": "^2.7.2",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "sinon": "^6.3.4"
+    "redux": "^4.0.0"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
     "react-intl": "^2.4.0",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "lodash": "^4.17.4"
   },
   "peerDependencies": {
-    "@folio/stripes": "^2.0.0",
+    "@folio/stripes": "^2.11.0",
     "react": "*"
-  },
-  "stripes": {
-    "type": "app",
-    "displayName": "ui-plugin-find-finc-metadata-source.meta.title",
-    "route": "/pluginfind-finc-metadata-source",
-    "hasSettings": true,
-    "okapiInterfaces": {},
-    "permissionSets": [
-      {
-        "permissionName": "module.plugin-find-finc-metadata-source.enabled",
-        "displayName": "UI: plugin-find-finc-metadata-source module is enabled",
-        "visible": true
-      },
-      {
-        "permissionName": "settings.plugin-find-finc-metadata-source.enabled",
-        "displayName": "Settings (plugin-find-finc-metadata-source): display list of settings pages",
-        "subPermissions": [
-          "settings.enabled"
-        ],
-        "visible": true
-      }
-    ]
   }
 }
