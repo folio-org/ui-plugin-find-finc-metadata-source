@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Modal } from '@folio/stripes/components';
 
 import SourceSearchContainer from './SourceSearchContainer';
+import css from './SourceSearch.css';
 
 class SourceSearchModal extends Component {
   static propTypes = {
@@ -31,7 +32,7 @@ class SourceSearchModal extends Component {
   render() {
     return (
       <Modal
-        // contentClass={css.modalContent}
+        contentClass={css.modalContent}
         enforceFocus={false}
         onClose={this.props.onClose}
         size="large"

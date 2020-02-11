@@ -16,33 +16,29 @@ const RESULT_COUNT_INCREMENT = 30;
 
 class SourceSearchContainer extends React.Component {
   static manifest = Object.freeze({
-    sources: {
+    metadataSources: {
       type: 'okapi',
       records: 'fincConfigMetadataSources',
       recordsRequired: '%{resultCount}',
       perRequest: 30,
       path: 'finc-config/metadata-sources',
-      GET: {
-        params: {
-          query: makeQueryFunction(
-            'cql.allRecords=1',
-            '(label="%{query.query}*" or sourceId="%{query.query}*")',
-            {
-              'label': 'label',
-              'sourceId': 'sourceId/number'
-            },
-            filterConfig,
-            2,
-          ),
-        },
-        staticFallback: { params: {} },
-      },
+      // GET: {
+      //   params: {
+      //     query: makeQueryFunction(
+      //       'cql.allRecords=1',
+      //       '(label="%{query.query}*" or sourceId="%{query.query}*")',
+      //       {
+      //         'label': 'label',
+      //         'sourceId': 'sourceId/number'
+      //       },
+      //       filterConfig,
+      //       2,
+      //     ),
+      //   },
+      //   staticFallback: { params: {} },
+      // },
     },
-    query: {
-      initialValue: {
-        sort: 'label'
-      }
-    },
+    query: { initialValue: {} },
     resultCount: { initialValue: INITIAL_RESULT_COUNT },
   });
 
@@ -63,7 +59,7 @@ class SourceSearchContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.source = new StripesConnectedSource(this.props, this.logger, 'sources');
+    this.source = new StripesConnectedSource(this.props, this.logger, 'metadataSources');
 
     if (this.searchField.current) {
       this.searchField.current.focus();
@@ -95,29 +91,26 @@ class SourceSearchContainer extends React.Component {
     const { onSelectRow, resources } = this.props;
 
     if (this.source) {
-      this.source.update(this.props, 'sources');
+      this.source.update(this.props, 'metadataSources');
     }
 
-    const sources = get(resources, 'sources.records', []);
+    const sources = get(resources, 'metadataSources.records', []);
 
     console.log(sources);
 
     return (
-
-      'container'
-
-      // <SourcesView
-      //   data={sources}
-      //   onNeedMoreData={this.handleNeedMoreData}
-      //   onSelectRow={onSelectRow}
-      //   queryGetter={this.queryGetter}
-      //   querySetter={this.querySetter}
-      //   // searchString={location.search}
-      //   // selectedRecordId={match.params.id}
-      //   source={this.source}
-      //   // add values for search-selectbox
-      //   onChangeIndex={this.onChangeIndex}
-      // />
+      <SourcesView
+        data={sources}
+        onNeedMoreData={this.handleNeedMoreData}
+        onSelectRow={onSelectRow}
+        queryGetter={this.queryGetter}
+        querySetter={this.querySetter}
+        // searchString={location.search}
+        // selectedRecordId={match.params.id}
+        source={this.source}
+        // add values for search-selectbox
+        onChangeIndex={this.onChangeIndex}
+      />
     );
   }
 }
