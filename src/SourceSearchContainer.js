@@ -44,7 +44,7 @@ class SourceSearchContainer extends React.Component {
 
   static propTypes = {
     mutator: PropTypes.object,
-    onSelectRow: PropTypes.func,
+    onSelectRow: PropTypes.func.isRequired,
     resources: PropTypes.object,
     stripes: PropTypes.shape({
       logger: PropTypes.object,
