@@ -1,3 +1,4 @@
-import FindSourceContainer from './src/FindSourceContainer';
+import React from 'react';
+import SourceSearch from './src/SourceSearch';
 
-export default FindSourceContainer;
+export default props => <SourceSearch {...props} />;
