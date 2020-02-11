@@ -45,7 +45,7 @@ class SourceSearchModal extends Component {
       >
         <SourceSearchContainer
           {...this.props}
-          onSelectRow={this.selectUDP}
+          onSelectRow={this.selectSource}
         />
       </Modal>
     );
