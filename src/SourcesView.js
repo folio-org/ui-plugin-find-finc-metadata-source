@@ -20,9 +20,9 @@ import {
 
 // import urls from '../DisplayUtils/urls';
 import SourceFilters from './SourceFilters';
-// import FincNavigation from '../Navigation/FincNavigation';
+import css from './SourceSearch.css';
 
-class SourcesView extends React.Component {
+export default class SourcesView extends React.Component {
   static defaultProps = {
     data: {},
     visibleColumns: ['label', 'sourceId', 'status', 'solrShard', 'lastProcessed'],
@@ -45,8 +45,8 @@ class SourcesView extends React.Component {
   };
 
   columnWidths = {
-    label: 250,
-    sourceId: 50,
+    label: 300,
+    sourceId: 100,
     status: 100,
     solrShard: 100,
     lastProcessed: 100
@@ -130,7 +130,7 @@ class SourcesView extends React.Component {
       <div data-test-sources ref={contentRef}>
         <SearchAndSortQuery
           // NEED FILTER: {"status":["active","technical implementation","wish"]}
-          initialFilterState={{ status: ['active', 'technical implementation'] }}
+          initialFilterState={{}}
           initialSearchState={{ query: '' }}
           initialSortState={{ sort: 'label' }}
           queryGetter={queryGetter}
@@ -160,8 +160,7 @@ class SourcesView extends React.Component {
                       paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
                     >
                       <form onSubmit={onSubmitSearch}>
-                        {/* {this.renderNavigation('source')} */}
-                        <div>
+                        <div className={css.searchGroupWrap}>
                           <SearchField
                             autoFocus
                             id="sourceSearchField"
