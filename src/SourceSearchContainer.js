@@ -96,8 +96,6 @@ class SourceSearchContainer extends React.Component {
 
     const sources = get(resources, 'metadataSources.records', []);
 
-    console.log(sources);
-
     return (
       <SourcesView
         data={sources}
