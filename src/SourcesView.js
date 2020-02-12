@@ -60,9 +60,9 @@ export default class SourcesView extends React.Component {
   columnWidths = {
     label: 300,
     sourceId: 100,
-    status: 100,
+    status: 150,
     solrShard: 100,
-    lastProcessed: 100
+    lastProcessed: 150
   };
 
   formatter = {
@@ -142,8 +142,7 @@ export default class SourcesView extends React.Component {
     return (
       <div data-test-sources ref={contentRef}>
         <SearchAndSortQuery
-          // NEED FILTER: {"status":["active","technical implementation","wish"]}
-          initialFilterState={{}}
+          initialFilterState={{ status: ['active', 'technical implementation'] }}
           initialSearchState={{ query: '' }}
           initialSortState={{ sort: 'label' }}
           queryGetter={queryGetter}
@@ -219,7 +218,7 @@ export default class SourcesView extends React.Component {
                     </Pane>
                   }
                   <Pane
-                    defaultWidth="fill"
+                    defaultWidth="80%"
                     firstMenu={this.renderResultsFirstMenu(activeFilters)}
                     padContent={false}
                     paneTitle="Metadata Sources"
@@ -236,7 +235,6 @@ export default class SourcesView extends React.Component {
                       onHeaderClick={onSort}
                       onNeedMoreData={onNeedMoreData}
                       onRowClick={onSelectRow}
-                      rowFormatter={this.rowFormatter}
                       sortDirection={
                         sortOrder.startsWith('-') ? 'descending' : 'ascending'
                       }

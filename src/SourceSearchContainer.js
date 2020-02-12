@@ -11,8 +11,8 @@ import {
 import SourcesView from './SourcesView';
 import filterConfig from './filterConfigData';
 
-const INITIAL_RESULT_COUNT = 30;
-const RESULT_COUNT_INCREMENT = 30;
+const INITIAL_RESULT_COUNT = 100;
+const RESULT_COUNT_INCREMENT = 100;
 
 class SourceSearchContainer extends React.Component {
   static manifest = Object.freeze({
@@ -20,23 +20,24 @@ class SourceSearchContainer extends React.Component {
       type: 'okapi',
       records: 'fincConfigMetadataSources',
       recordsRequired: '%{resultCount}',
-      perRequest: 30,
+      perRequest: 100,
       path: 'finc-config/metadata-sources',
-      // GET: {
-      //   params: {
-      //     query: makeQueryFunction(
-      //       'cql.allRecords=1',
-      //       '(label="%{query.query}*" or sourceId="%{query.query}*")',
-      //       {
-      //         'label': 'label',
-      //         'sourceId': 'sourceId/number'
-      //       },
-      //       filterConfig,
-      //       2,
-      //     ),
-      //   },
-      //   staticFallback: { params: {} },
-      // },
+      resourceShouldRefresh: true,
+      GET: {
+        params: {
+          query: makeQueryFunction(
+            'cql.allRecords=1',
+            '(label="%{query.query}*" or sourceId="%{query.query}*")',
+            {
+              'label': 'label',
+              'sourceId': 'sourceId/number'
+            },
+            filterConfig,
+            2,
+          ),
+        },
+        staticFallback: { params: {} },
+      },
     },
     query: { initialValue: {} },
     resultCount: { initialValue: INITIAL_RESULT_COUNT },
@@ -81,8 +82,8 @@ class SourceSearchContainer extends React.Component {
   };
 
   // add update if search-selectbox is changing
-  onChangeIndex = (qindex) => {
-    // const qindex = e.target.value;
+  onChangeIndex = (e) => {
+    const qindex = e.target.value;
 
     this.props.mutator.query.update({ qindex });
   }
