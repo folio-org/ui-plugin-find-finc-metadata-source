@@ -37,7 +37,8 @@
     "prop-types": "^15.6.0",
     "react-intl": "^2.4.0",
     "react-router-dom": "^4.1.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "dom-helpers":"^3.4.0"
   },
   "peerDependencies": {
     "@folio/stripes": "^2.11.0",

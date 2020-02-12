@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
+import {
+  get,
+  noop
+} from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import {
   MultiColumnList,
@@ -11,7 +14,6 @@ import {
   PaneMenu,
   Paneset
 } from '@folio/stripes/components';
-import { AppIcon } from '@folio/stripes/core';
 import {
   SearchAndSortQuery,
   SearchAndSortNoResultsMessage as NoResultsMessage,
@@ -22,7 +24,18 @@ import {
 import SourceFilters from './SourceFilters';
 import css from './SourceSearch.css';
 
+const searchableIndexes = [
+  { label: 'All', value: '', makeQuery: term => `(label="${term}*" or sourceId="${term}*")` },
+  { label: 'Source Name', value: 'label', makeQuery: term => `(label="${term}*")` },
+  { label: 'Source ID', value: 'sourceId', makeQuery: term => `(sourceId="${term}*")` }
+];
+
 export default class SourcesView extends React.Component {
+  static propTypes = {
+    // add values for search-selectbox
+    onChangeIndex: PropTypes.func,
+  }
+
   static defaultProps = {
     data: {},
     visibleColumns: ['label', 'sourceId', 'status', 'solrShard', 'lastProcessed'],
@@ -170,10 +183,10 @@ export default class SourcesView extends React.Component {
                             onClear={getSearchHandlers().reset}
                             value={searchValue.query}
                             // add values for search-selectbox
-                            // onChangeIndex={onChangeIndex}
-                            // searchableIndexes={searchableIndexes}
-                            // searchableIndexesPlaceholder={null}
-                            // selectedIndex={_.get(this.props.contentData, 'qindex')}
+                            onChangeIndex={onChangeIndex}
+                            searchableIndexes={searchableIndexes}
+                            searchableIndexesPlaceholder={null}
+                            selectedIndex={get(this.props.data, 'qindex')}
                           />
                           <Button
                             buttonStyle="primary"
