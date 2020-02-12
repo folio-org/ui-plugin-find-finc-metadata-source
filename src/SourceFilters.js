@@ -41,7 +41,7 @@ class SourceFilters extends React.Component {
         let newValue = {};
         newValue = {
           'value': key.cql,
-          'name': key.name,
+          'label': key.name,
         };
         newValues.push(newValue);
       });
