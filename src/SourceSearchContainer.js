@@ -4,10 +4,9 @@ import { get } from 'lodash';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryFunction,
-  StripesConnectedSource
+  StripesConnectedSource,
 } from '@folio/stripes/smart-components';
 
-// import urls from '../components/DisplayUtils/urls';
 import SourcesView from './SourcesView';
 import filterConfig from './filterConfigData';
 
@@ -65,6 +64,10 @@ class SourceSearchContainer extends React.Component {
     if (this.searchField.current) {
       this.searchField.current.focus();
     }
+
+    this.props.mutator.query.update({
+      filters: 'status.active,status.technical implementation',
+    });
   }
 
   querySetter = ({ nsValues }) => {
@@ -81,7 +84,6 @@ class SourceSearchContainer extends React.Component {
     }
   };
 
-  // add update if search-selectbox is changing
   onChangeIndex = (e) => {
     const qindex = e.target.value;
 
@@ -104,10 +106,7 @@ class SourceSearchContainer extends React.Component {
         onSelectRow={onSelectRow}
         queryGetter={this.queryGetter}
         querySetter={this.querySetter}
-        // searchString={location.search}
-        // selectedRecordId={match.params.id}
         source={this.source}
-        // add values for search-selectbox
         onChangeIndex={this.onChangeIndex}
       />
     );

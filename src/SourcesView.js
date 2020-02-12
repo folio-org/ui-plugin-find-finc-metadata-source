@@ -2,25 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   get,
-  noop
+  noop,
 } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import {
-  MultiColumnList,
-  SearchField,
-  Pane,
-  Icon,
   Button,
+  Icon,
+  MultiColumnList,
+  Pane,
   PaneMenu,
-  Paneset
+  Paneset,
+  SearchField,
 } from '@folio/stripes/components';
 import {
   SearchAndSortQuery,
   SearchAndSortNoResultsMessage as NoResultsMessage,
-  SearchAndSortSearchButton as FilterPaneToggle
+  SearchAndSortSearchButton as FilterPaneToggle,
 } from '@folio/stripes/smart-components';
 
-// import urls from '../DisplayUtils/urls';
 import SourceFilters from './SourceFilters';
 import css from './SourceSearch.css';
 
@@ -32,7 +31,6 @@ const searchableIndexes = [
 
 export default class SourcesView extends React.Component {
   static propTypes = {
-    // add values for search-selectbox
     onChangeIndex: PropTypes.func,
   }
 
