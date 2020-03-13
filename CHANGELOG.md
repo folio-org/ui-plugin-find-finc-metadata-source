@@ -1,5 +1,5 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
-## 1.0.0 (IN PROGRESS)
-
-* New app created with stripes-cli
+## [1.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v1.0.0) (2020-03-13)
+* New plugin module created.
+* Support selecting finc metadata-sources.
