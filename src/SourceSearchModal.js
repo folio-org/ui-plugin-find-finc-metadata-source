@@ -33,7 +33,6 @@ class SourceSearchModal extends Component {
     return (
       <Modal
         contentClass={css.modalContent}
-        enforceFocus={false}
         onClose={this.props.onClose}
         size="large"
         open={this.props.open}
