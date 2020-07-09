@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
+## 2.0.0 (IN PROGRESS)
+
+* Increment `@folio/stripes` to `v5.0` and `react-router` to `v5.2` (and, bugfix, move it to peer)
+
 ## [1.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v1.0.0) (2020-03-13)
 * New plugin module created.
 * Support selecting finc metadata-sources.
