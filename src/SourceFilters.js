@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Accordion,
@@ -67,7 +68,7 @@ class SourceFilters extends React.Component {
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id={`filter-accordion-${key}`}
-        label={`${name}`}
+        label={<FormattedMessage id={`ui-plugin-find-finc-metadata-source.filter.${key}`} />}
         onClearFilter={() => { this.props.filterHandlers.clearGroup(key); }}
         separator={false}
         {...props}
