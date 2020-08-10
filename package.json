@@ -15,7 +15,7 @@
     "pluginType": "find-finc-metadata-source",
     "displayName": "ui-plugin-find-finc-metadata-source.meta.title",
     "okapiInterfaces": {
-      "finc-config/metadata-sources": "1.0"
+      "finc-config/metadata-sources": "2.0"
     }
   },
   "scripts": {
