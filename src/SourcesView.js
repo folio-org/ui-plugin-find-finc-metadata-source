@@ -1,9 +1,6 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  get,
-  noop,
-} from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import {
   Button,
@@ -67,7 +64,7 @@ export default class SourcesView extends React.Component {
   formatter = {
     label: source => source.label,
     sourceId: source => source.sourceId,
-    status: source => source.status,
+    status: source => _.upperFirst(source.status),
     solrShard: source => source.solrShard,
     lastProcessed: source => source.lastProcessed,
   };
@@ -90,7 +87,7 @@ export default class SourcesView extends React.Component {
           source={source}
           searchTerm={query.query || ''}
           filterPaneIsVisible
-          toggleFilterPane={noop}
+          toggleFilterPane={_.noop}
         />
       </div>
     );
@@ -182,7 +179,7 @@ export default class SourcesView extends React.Component {
                             onChangeIndex={onChangeIndex}
                             searchableIndexes={searchableIndexes}
                             searchableIndexesPlaceholder={null}
-                            selectedIndex={get(this.props.data, 'qindex')}
+                            selectedIndex={_.get(this.props.data, 'qindex')}
                           />
                           <Button
                             buttonStyle="primary"
