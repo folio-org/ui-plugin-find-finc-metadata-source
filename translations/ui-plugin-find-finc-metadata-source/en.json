@@ -2,6 +2,9 @@
   "meta.title": "plugin-find-finc-metadata-source",
   "modal.label": "Select metadata source",
   "searchButton.title": "Find metadata source",
-  "filter.status": "Implementation status",
-  "filter.solrShard": "Solar shard"
+  "label": "Name",
+  "id": "ID",
+  "status": "Implementation status",
+  "solrShard": "Solar shard",
+  "lastProcessed": "Last processed"
 }

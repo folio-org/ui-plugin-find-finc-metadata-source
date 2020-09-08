@@ -46,11 +46,11 @@ export default class SourcesView extends React.Component {
   }
 
   columnMapping = {
-    label: 'Label',
-    sourceId: 'SourceId',
-    status: 'Status',
-    solrShard: 'SolrShard',
-    lastProcessed: 'LastProcessed'
+    label: <FormattedMessage id="ui-plugin-find-finc-metadata-source.label" />,
+    sourceId: <FormattedMessage id="ui-plugin-find-finc-metadata-source.id" />,
+    status: <FormattedMessage id="ui-plugin-find-finc-metadata-source.status" />,
+    solrShard: <FormattedMessage id="ui-plugin-find-finc-metadata-source.solrShard" />,
+    lastProcessed: <FormattedMessage id="ui-plugin-find-finc-metadata-source.lastProcessed" />,
   };
 
   columnWidths = {
