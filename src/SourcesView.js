@@ -1,9 +1,6 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  get,
-  noop,
-} from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import {
   Button,
@@ -49,25 +46,25 @@ export default class SourcesView extends React.Component {
   }
 
   columnMapping = {
-    label: 'Label',
-    sourceId: 'SourceId',
-    status: 'Status',
-    solrShard: 'SolrShard',
-    lastProcessed: 'LastProcessed'
+    label: <FormattedMessage id="ui-plugin-find-finc-metadata-source.label" />,
+    sourceId: <FormattedMessage id="ui-plugin-find-finc-metadata-source.id" />,
+    status: <FormattedMessage id="ui-plugin-find-finc-metadata-source.status" />,
+    solrShard: <FormattedMessage id="ui-plugin-find-finc-metadata-source.solrShard" />,
+    lastProcessed: <FormattedMessage id="ui-plugin-find-finc-metadata-source.lastProcessed" />,
   };
 
   columnWidths = {
-    label: 300,
-    sourceId: 100,
-    status: 150,
-    solrShard: 100,
-    lastProcessed: 150
+    label: 250,
+    sourceId: 50,
+    status: 200,
+    solrShard: 150,
+    lastProcessed: 230
   };
 
   formatter = {
     label: source => source.label,
     sourceId: source => source.sourceId,
-    status: source => source.status,
+    status: source => _.upperFirst(source.status),
     solrShard: source => source.solrShard,
     lastProcessed: source => source.lastProcessed,
   };
@@ -90,7 +87,7 @@ export default class SourcesView extends React.Component {
           source={source}
           searchTerm={query.query || ''}
           filterPaneIsVisible
-          toggleFilterPane={noop}
+          toggleFilterPane={_.noop}
         />
       </div>
     );
@@ -182,7 +179,7 @@ export default class SourcesView extends React.Component {
                             onChangeIndex={onChangeIndex}
                             searchableIndexes={searchableIndexes}
                             searchableIndexesPlaceholder={null}
-                            selectedIndex={get(this.props.data, 'qindex')}
+                            selectedIndex={_.get(this.props.data, 'qindex')}
                           />
                           <Button
                             buttonStyle="primary"

@@ -68,7 +68,7 @@ class SourceFilters extends React.Component {
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id={`filter-accordion-${key}`}
-        label={<FormattedMessage id={`ui-plugin-find-finc-metadata-source.filter.${key}`} />}
+        label={<FormattedMessage id={`ui-plugin-find-finc-metadata-source.${key}`} />}
         onClearFilter={() => { this.props.filterHandlers.clearGroup(key); }}
         separator={false}
         {...props}
