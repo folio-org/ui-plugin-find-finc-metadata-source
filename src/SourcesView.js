@@ -58,7 +58,7 @@ export default class SourcesView extends React.Component {
     sourceId: 50,
     status: 200,
     solrShard: 150,
-    lastProcessed: 150
+    lastProcessed: 230
   };
 
   formatter = {
