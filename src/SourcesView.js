@@ -54,10 +54,10 @@ export default class SourcesView extends React.Component {
   };
 
   columnWidths = {
-    label: 300,
-    sourceId: 100,
-    status: 150,
-    solrShard: 100,
+    label: 250,
+    sourceId: 50,
+    status: 200,
+    solrShard: 150,
     lastProcessed: 150
   };
 
