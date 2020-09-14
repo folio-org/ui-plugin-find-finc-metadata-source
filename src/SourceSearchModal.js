@@ -12,7 +12,7 @@ class SourceSearchModal extends Component {
       connect: PropTypes.func.isRequired
     }).isRequired,
     modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-    selectSource: PropTypes.func.isRequired,
+    selectSource: PropTypes.func,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool,
     dataKey: PropTypes.string
