@@ -20,7 +20,7 @@ import {
 }
 
 @interactor class PluginModalInteractor {
-  // static defaultScope = '#ModuleContainer';
+  static defaultScope = '#ModuleContainer';
   statusFilter = scoped('section[id="filter-accordion-status"]');
   solrShardFilter = scoped('section[id="filter-accordion-solrShard"]');
 
@@ -34,6 +34,9 @@ import {
     click: clickable(),
     isEnabled: is(':not([disabled])'),
   });
+
+  submitBtn = scoped('#sourceSubmitSearch');
+  resetAllBtn = scoped('#clickable-reset-all');
 }
 
 @interactor class FindSourceInteractor {

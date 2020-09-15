@@ -12,8 +12,8 @@ import PluginHarness from '../helpers/PluginHarness';
 
 const SOURCE_COUNT = 25;
 const CONTACT_COUNT = 10;
-// let closeHandled = false;
-// let sourceChosen = false;
+let closeHandled = false;
+let sourceChosen = false;
 
 describe('UI-plugin-find-source', function () {
   const findSource = new FindSourceInteractor();
@@ -26,14 +26,13 @@ describe('UI-plugin-find-source', function () {
 
   describe('rendering', function () {
     beforeEach(async function () {
-      // sourceChosen = false;
-      // closeHandled = false;
+      sourceChosen = false;
+      closeHandled = false;
       await mount(
-        // <PluginHarness
-        //   selectSource={() => { sourceChosen = true; }}
-        //   afterClose={() => { closeHandled = true; }}
-        // />
-        <PluginHarness />
+        <PluginHarness
+          selectSource={() => { sourceChosen = true; }}
+          afterClose={() => { closeHandled = true; }}
+        />
       );
     });
 
@@ -49,15 +48,11 @@ describe('UI-plugin-find-source', function () {
       });
 
       it('opens a modal', function () {
-        expect(
-          findSource.modal.isPresent
-        ).to.be.true;
+        expect(findSource.modal.isPresent).to.be.true;
       });
 
       it('focuses the search field', function () {
-        expect(
-          findSource.modal.searchField.isFocused
-        ).to.be.true;
+        expect(findSource.modal.searchField.isFocused).to.be.true;
       });
 
       it('status filter should be present', function () {
@@ -68,15 +63,38 @@ describe('UI-plugin-find-source', function () {
         expect(findSource.modal.solrShardFilter.isPresent).to.be.true;
       });
 
-      // describe('checking show inactive filter', function () {
-      //   beforeEach(async function () {
-      //     await findSource.modal.clickInactiveUsersCheckbox();
-      //   });
+      it('reset all button should be present', () => {
+        expect(findSource.modal.resetAllBtn.isPresent).to.be.true;
+      });
 
-      //   it('pulls a result set', function () {
-      //     expect(findSource.modal.instances().length).to.be.greaterThan(0);
-      //   });
-      // });
+      it('submit button should be present', () => {
+        expect(findSource.modal.submitBtn.isPresent).to.be.true;
+      });
+
+      it('search field should be present', () => {
+        expect(findSource.modal.searchField.isPresent).to.be.true;
+      });
+
+
+      describe('select a source of results', function () {
+        it('should return a set of results', function () {
+          expect(findSource.modal.instances().length).to.be.equal(SOURCE_COUNT);
+        });
+
+        describe('select a source', function () {
+          beforeEach(async function () {
+            await findSource.modal.instances(1).click();
+          });
+
+          it('modal should closed', function () {
+            expect(closeHandled).to.be.false;
+          });
+
+          it('calls the selectSource callback', function () {
+            expect(sourceChosen).to.be.true;
+          });
+        });
+      });
     });
   });
 });
