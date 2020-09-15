@@ -76,23 +76,6 @@ export default class SourcesView extends React.Component {
     }));
   }
 
-  renderIsEmptyMessage = (query, source) => {
-    if (!source) {
-      return 'no source yet';
-    }
-
-    return (
-      <div data-test-sources-no-results-message>
-        <NoResultsMessage
-          source={source}
-          searchTerm={query.query || ''}
-          filterPaneIsVisible
-          toggleFilterPane={_.noop}
-        />
-      </div>
-    );
-  };
-
   // fade in / out the filter menu
   renderResultsFirstMenu = (filters) => {
     const { filterPaneIsVisible } = this.state;
@@ -126,6 +109,16 @@ export default class SourcesView extends React.Component {
     const count = source ? source.totalCount() : 0;
     const query = queryGetter() || {};
     const sortOrder = query.sort || '';
+    const resultsStatusMessage = source ? (
+      <div data-test-find-source-no-results-message>
+        <NoResultsMessage
+          data-test-find-source-no-results-message
+          source={source}
+          searchTerm={query.query || ''}
+          filterPaneIsVisible
+          toggleFilterPane={_.noop}
+        />
+      </div>) : 'no source yet';
 
     return (
       <div data-test-sources ref={contentRef}>
@@ -156,6 +149,7 @@ export default class SourcesView extends React.Component {
                   {this.state.filterPaneIsVisible &&
                     <Pane
                       defaultWidth="20%"
+                      id="plugin-find-source-filter-pane"
                       lastMenu={
                         <PaneMenu>
                           <CollapseFilterPaneButton
@@ -225,7 +219,7 @@ export default class SourcesView extends React.Component {
                       contentData={data}
                       formatter={this.formatter}
                       id="list-sources"
-                      isEmptyMessage="no results"
+                      isEmptyMessage={resultsStatusMessage}
                       onHeaderClick={onSort}
                       onNeedMoreData={onNeedMoreData}
                       onRowClick={onSelectRow}

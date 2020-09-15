@@ -51,9 +51,9 @@ describe('UI-plugin-find-source', function () {
         expect(findSource.modal.isPresent).to.be.true;
       });
 
-      it('focuses the search field', function () {
-        expect(findSource.modal.searchField.isFocused).to.be.true;
-      });
+      // it('focuses the search field', function () {
+      //   expect(findSource.modal.searchField.isFocused).to.be.true;
+      // });
 
       it('status filter should be present', function () {
         expect(findSource.modal.statusFilter.isPresent).to.be.true;
@@ -74,7 +74,6 @@ describe('UI-plugin-find-source', function () {
       it('search field should be present', () => {
         expect(findSource.modal.searchField.isPresent).to.be.true;
       });
-
 
       describe('select a source of results', function () {
         it('should return a set of results', function () {

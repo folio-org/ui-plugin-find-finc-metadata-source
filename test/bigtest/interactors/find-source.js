@@ -1,12 +1,13 @@
 import {
-  interactor,
-  is,
-  scoped,
-  collection,
+  blurrable,
   clickable,
+  collection,
   focusable,
   fillable,
-  blurrable,
+  interactor,
+  is,
+  isPresent,
+  scoped,
   text,
 } from '@bigtest/interactor';
 
@@ -23,6 +24,7 @@ import {
   static defaultScope = '#ModuleContainer';
   statusFilter = scoped('section[id="filter-accordion-status"]');
   solrShardFilter = scoped('section[id="filter-accordion-solrShard"]');
+  clickActiveSourcesCheckbox = clickable('#clickable-filter-solrShard-slub-main');
 
   instances = collection('[role="rowgroup"] [role="row"]', {
     click: clickable('[role=gridcell]'),
@@ -37,6 +39,7 @@ import {
 
   submitBtn = scoped('#sourceSubmitSearch');
   resetAllBtn = scoped('#clickable-reset-all');
+  noResultsDisplayed = isPresent('[data-test-find-source-no-results-message]');
 }
 
 @interactor class FindSourceInteractor {
