@@ -75,6 +75,16 @@ describe('UI-plugin-find-source', function () {
         expect(findSource.modal.searchField.isPresent).to.be.true;
       });
 
+      describe('filling in the searchField', function () {
+        beforeEach(async function () {
+          await findSource.modal.searchField.fill('t');
+        });
+
+        it('activates the reset button', function () {
+          expect(findSource.modal.resetAllBtn.isEnabled).to.be.true;
+        });
+      });
+
       describe('select a source of results', function () {
         it('should return a set of results', function () {
           expect(findSource.modal.instances().length).to.be.equal(SOURCE_COUNT);

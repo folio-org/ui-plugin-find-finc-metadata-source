@@ -38,7 +38,11 @@ import {
   });
 
   submitBtn = scoped('#sourceSubmitSearch');
-  resetAllBtn = scoped('#clickable-reset-all');
+  resetAllBtn = scoped('#clickable-reset-all', {
+    isEnabled: is(':not([disabled])'),
+    click: clickable()
+  });
+
   noResultsDisplayed = isPresent('[data-test-find-source-no-results-message]');
 }
 
