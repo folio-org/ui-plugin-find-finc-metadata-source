@@ -99,7 +99,6 @@ SourceSearch.propTypes = {
   searchLabel: PropTypes.node,
   searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
-  marginTop0: PropTypes.bool,
 };
 
 export default SourceSearch;

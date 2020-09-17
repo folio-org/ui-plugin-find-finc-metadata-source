@@ -8,14 +8,10 @@ import css from './SourceSearch.css';
 
 class SourceSearchModal extends Component {
   static propTypes = {
-    stripes: PropTypes.shape({
-      connect: PropTypes.func.isRequired
-    }).isRequired,
     modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
     selectSource: PropTypes.func,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool,
-    dataKey: PropTypes.string
   };
 
   constructor(props) {

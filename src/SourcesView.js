@@ -253,7 +253,6 @@ SourcesView.propTypes = Object.freeze({
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
   source: PropTypes.shape({
-    loaded: PropTypes.func,
     totalCount: PropTypes.func
   }),
   visibleColumns: PropTypes.arrayOf(PropTypes.string)
