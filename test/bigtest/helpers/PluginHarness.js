@@ -13,7 +13,7 @@ class PluginHarness extends React.Component {
         marginTop0
         searchButtonStyle="default"
         dataKey="source"
-        selectUser={noop}
+        selectSource={noop}
         visibleColumns={['label', 'sourceId', 'status', 'solrShard', 'lastProcessed']}
         {...this.props}
       >
