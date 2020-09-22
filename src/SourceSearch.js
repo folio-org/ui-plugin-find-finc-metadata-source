@@ -3,7 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import contains from 'dom-helpers/query/contains';
 
-import { Button, Icon } from '@folio/stripes/components';
+import {
+  Button,
+  Icon
+} from '@folio/stripes/components';
 
 import SourceSearchModal from './SourceSearchModal';
 
