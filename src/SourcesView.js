@@ -106,7 +106,7 @@ export default class SourcesView extends React.Component {
   }
 
   render() {
-    const { children, contentRef, data, onChangeIndex, onNeedMoreData, onSelectRow, queryGetter, querySetter, source, visibleColumns } = this.props;
+    const { contentRef, data, onChangeIndex, onNeedMoreData, onSelectRow, queryGetter, querySetter, source, visibleColumns } = this.props;
     const count = source ? source.totalCount() : 0;
     const query = queryGetter() || {};
     const sortOrder = query.sort || '';
@@ -229,7 +229,6 @@ export default class SourcesView extends React.Component {
                       visibleColumns={visibleColumns}
                     />
                   </Pane>
-                  {children}
                 </Paneset>
               );
             }
@@ -241,7 +240,6 @@ export default class SourcesView extends React.Component {
 }
 
 SourcesView.propTypes = Object.freeze({
-  children: PropTypes.object,
   contentRef: PropTypes.object,
   data: PropTypes.arrayOf(PropTypes.object),
   onNeedMoreData: PropTypes.func,
