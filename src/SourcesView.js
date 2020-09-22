@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+
 import {
   Button,
   Icon,
@@ -113,9 +114,9 @@ export default class SourcesView extends React.Component {
       <div data-test-find-source-no-results-message>
         <NoResultsMessage
           data-test-find-source-no-results-message
-          source={source}
-          searchTerm={query.query || ''}
           filterPaneIsVisible
+          searchTerm={query.query || ''}
+          source={source}
           toggleFilterPane={_.noop}
         />
       </div>) : 'no source yet';
@@ -132,15 +133,15 @@ export default class SourcesView extends React.Component {
         >
           {
             ({
-              searchValue,
-              getSearchHandlers,
-              onSubmitSearch,
-              onSort,
-              getFilterHandlers,
               activeFilters,
               filterChanged,
+              getFilterHandlers,
+              getSearchHandlers,
+              onSort,
+              onSubmitSearch,
+              resetAll,
+              searchValue,
               searchChanged,
-              resetAll
             }) => {
               const disableReset = () => (!filterChanged && !searchChanged);
 
@@ -177,9 +178,7 @@ export default class SourcesView extends React.Component {
                           />
                           <Button
                             buttonStyle="primary"
-                            disabled={
-                              !searchValue.query || searchValue.query === ''
-                            }
+                            disabled={!searchValue.query || searchValue.query === ''}
                             fullWidth
                             id="sourceSubmitSearch"
                             type="submit"
@@ -223,9 +222,7 @@ export default class SourcesView extends React.Component {
                       onHeaderClick={onSort}
                       onNeedMoreData={onNeedMoreData}
                       onRowClick={onSelectRow}
-                      sortDirection={
-                        sortOrder.startsWith('-') ? 'descending' : 'ascending'
-                      }
+                      sortDirection={sortOrder.startsWith('-') ? 'descending' : 'ascending'}
                       sortOrder={sortOrder.replace(/^-/, '').replace(/,.*/, '')}
                       totalCount={count}
                       virtualize

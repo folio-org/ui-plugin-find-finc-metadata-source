@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Button, Icon } from '@folio/stripes/components';
 import contains from 'dom-helpers/query/contains';
+
+import { Button, Icon } from '@folio/stripes/components';
 
 import SourceSearchModal from './SourceSearchModal';
 
@@ -65,13 +66,13 @@ class SourceSearch extends Component {
           <FormattedMessage id="ui-plugin-find-finc-metadata-source.searchButton.title">
             {ariaLabel => (
               <Button
+                aria-label={ariaLabel}
+                buttonRef={this.modalTrigger}
+                buttonStyle={searchButtonStyle}
                 id={buttonId}
                 key="searchButton"
-                buttonStyle={searchButtonStyle}
-                buttonRef={this.modalTrigger}
-                onClick={this.openModal}
-                aria-label={ariaLabel}
                 marginBottom0={marginBottom0}
+                onClick={this.openModal}
               >
                 {searchLabel || <Icon icon="search" color="#fff" />}
               </Button>
@@ -79,8 +80,8 @@ class SourceSearch extends Component {
           </FormattedMessage>}
         <SourceSearchModal
           modalRef={this.modalRef}
-          open={this.state.openModal}
           onClose={this.closeModal}
+          open={this.state.openModal}
           {...this.props}
         />
       </React.Fragment>
@@ -95,10 +96,10 @@ SourceSearch.defaultProps = {
 
 SourceSearch.propTypes = {
   buttonId: PropTypes.string,
-  renderTrigger: PropTypes.func,
-  searchLabel: PropTypes.node,
-  searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
+  renderTrigger: PropTypes.func,
+  searchButtonStyle: PropTypes.string,
+  searchLabel: PropTypes.node,
 };
 
 export default SourceSearch;
