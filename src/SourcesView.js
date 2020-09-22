@@ -208,7 +208,7 @@ export default class SourcesView extends React.Component {
                     defaultWidth="fill"
                     firstMenu={this.renderResultsFirstMenu(activeFilters)}
                     padContent={false}
-                    paneTitle="Metadata Sources"
+                    paneTitle={<FormattedMessage id="ui-plugin-find-finc-metadata-source.modal.paneTitle" />}
                     paneSub={this.renderResultsPaneSubtitle(source)}
                   >
                     <MultiColumnList
