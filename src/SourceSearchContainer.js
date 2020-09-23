@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryFunction,
@@ -102,12 +103,12 @@ class SourceSearchContainer extends React.Component {
     return (
       <SourcesView
         data={sources}
+        onChangeIndex={this.onChangeIndex}
         onNeedMoreData={this.handleNeedMoreData}
         onSelectRow={onSelectRow}
         queryGetter={this.queryGetter}
         querySetter={this.querySetter}
         source={this.source}
-        onChangeIndex={this.onChangeIndex}
       />
     );
   }

@@ -1,6 +1,7 @@
 {
   "meta.title": "plugin-find-finc-metadata-source",
   "modal.label": "Select metadata source",
+  "modal.paneTitle": "Metadata sources",
   "searchButton.title": "Find metadata source",
   "label": "Name",
   "id": "ID",
