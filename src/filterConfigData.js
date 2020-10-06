@@ -1,13 +1,16 @@
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 const filterConfig = [
   {
     name: 'status',
     cql: 'status',
     values: [
-      { name: 'Active', cql: 'active' },
-      { name: 'Request', cql: 'request' },
-      { name: 'Implementation', cql: 'implementation' },
-      { name: 'Closed', cql: 'closed' },
-      { name: 'Impossible', cql: 'impossible' }
+      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.active" />, cql: 'active' },
+      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.request" />, cql: 'request' },
+      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.implementation" />, cql: 'implementation' },
+      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.closed" />, cql: 'closed' },
+      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.impossible" />, cql: 'impossible' }
     ],
   },
   {
