@@ -1,5 +1,16 @@
 {
     "meta.title": "메타데이터 소스 찾기 플러그인",
     "modal.label": "메타데이터 소스 선택",
-    "searchButton.title": "메타데이터 소스 찾기"
+    "searchButton.title": "메타데이터 소스 찾기",
+    "modal.paneTitle": "Metadata sources",
+    "label": "Name",
+    "id": "ID",
+    "status": "Implementation status",
+    "solrShard": "Solar shard",
+    "lastProcessed": "Last processed",
+    "filterValue.active": "Active",
+    "filterValue.request": "Request",
+    "filterValue.implementation": "Implementation",
+    "filterValue.closed": "Closed",
+    "filterValue.impossible": "Impossible"
 }

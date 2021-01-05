@@ -1,5 +1,16 @@
 {
     "meta.title": "插件查找finc元数据源",
     "modal.label": "选择元数据源",
-    "searchButton.title": "查找元数据源"
+    "searchButton.title": "查找元数据源",
+    "modal.paneTitle": "Metadata sources",
+    "label": "Name",
+    "id": "ID",
+    "status": "Implementation status",
+    "solrShard": "Solar shard",
+    "lastProcessed": "Last processed",
+    "filterValue.active": "Active",
+    "filterValue.request": "Request",
+    "filterValue.implementation": "Implementation",
+    "filterValue.closed": "Closed",
+    "filterValue.impossible": "Impossible"
 }
