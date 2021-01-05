@@ -1,5 +1,16 @@
 {
     "meta.title": "plugin-find-finc-metadata-source",
     "modal.label": "اختر مصدر الميتاداتا",
-    "searchButton.title": "البحث عن مصدر الميتاداتا"
+    "searchButton.title": "البحث عن مصدر الميتاداتا",
+    "modal.paneTitle": "مصادر الميتاداتا",
+    "label": "الاسم",
+    "id": "المعرّف",
+    "status": "حالة التنفيذ",
+    "solrShard": "Solar Shard",
+    "lastProcessed": "آخر معالجة",
+    "filterValue.active": "نشط",
+    "filterValue.request": "طلب",
+    "filterValue.implementation": "تنفيذ",
+    "filterValue.closed": "مغلق",
+    "filterValue.impossible": "غير ممكن"
 }

@@ -1,5 +1,16 @@
 {
     "meta.title": "plugin-find-finc-metadata-source",
     "modal.label": "Selecionar fonte de metadados",
-    "searchButton.title": "Encontrar fonte de metadados"
+    "searchButton.title": "Encontrar fonte de metadados",
+    "modal.paneTitle": "Metadata sources",
+    "label": "Name",
+    "id": "ID",
+    "status": "Implementation status",
+    "solrShard": "Solar shard",
+    "lastProcessed": "Last processed",
+    "filterValue.active": "Active",
+    "filterValue.request": "Request",
+    "filterValue.implementation": "Implementation",
+    "filterValue.closed": "Closed",
+    "filterValue.impossible": "Impossible"
 }
