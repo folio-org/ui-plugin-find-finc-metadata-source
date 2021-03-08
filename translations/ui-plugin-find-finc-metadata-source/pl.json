@@ -1,16 +1,16 @@
 {
     "meta.title": "plugin-find-finc-metadata-source",
-    "modal.label": "Select metadata source",
-    "searchButton.title": "Find metadata source",
-    "modal.paneTitle": "Metadata sources",
-    "label": "Name",
+    "modal.label": "Wybierz źródło metadanych",
+    "searchButton.title": "Znajdź źródło metadanych",
+    "modal.paneTitle": "Źródła metadanych",
+    "label": "Nazwa",
     "id": "ID",
-    "status": "Implementation status",
+    "status": "Status wdrożenia",
     "solrShard": "Solar shard",
-    "lastProcessed": "Last processed",
-    "filterValue.active": "Active",
-    "filterValue.request": "Request",
-    "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Closed",
-    "filterValue.impossible": "Impossible"
+    "lastProcessed": "Ostatnio przetwarzane",
+    "filterValue.active": "Aktywny",
+    "filterValue.request": "Żądanie",
+    "filterValue.implementation": "Wdrożenie",
+    "filterValue.closed": "Zamknięte",
+    "filterValue.impossible": "Niemożliwe"
 }
