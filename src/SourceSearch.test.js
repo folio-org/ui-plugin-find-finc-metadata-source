@@ -25,9 +25,15 @@ describe('SourceSearch component', () => {
     expect(getByTestId('open-source-seach-modal-button')).toBeDefined();
   });
 
+  it('should render trigger button', () => {
+    const renderTrigger = jest.fn();
+    renderSourceSearch(false, renderTrigger);
+
+    expect(renderTrigger).toHaveBeenCalled();
+  });
+
   it('should open source search modal', () => {
     const { getByText, getByTestId } = renderSourceSearch();
-
     user.click(getByTestId('open-source-seach-modal-button'));
 
     expect(getByText('SourceSearchModal')).toBeDefined();
