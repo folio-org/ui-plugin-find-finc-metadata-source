@@ -72,6 +72,7 @@ class SourceSearch extends Component {
                 aria-label={ariaLabel}
                 buttonRef={this.modalTrigger}
                 buttonStyle={searchButtonStyle}
+                data-testid="open-source-seach-modal-button"
                 id={buttonId}
                 key="searchButton"
                 marginBottom0={marginBottom0}

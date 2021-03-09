@@ -16,7 +16,10 @@
     "displayName": "ui-plugin-find-finc-metadata-source.meta.title",
     "okapiInterfaces": {
       "finc-config/metadata-sources": "3.0"
-    }
+    },
+    "stripesDeps": [
+      "@folio/stripes-acq-components"
+    ]
   },
   "scripts": {
     "test": "yarn run test:jest && yarn run test:bigtest",
@@ -36,6 +39,7 @@
     "@testing-library/dom": "^7.26.6",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",
+    "@testing-library/user-event": "^12.6.2",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^26.6.3",
     "chai": "^4.2.0",
@@ -59,6 +63,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
+    "@folio/stripes-acq-components": "^2.2.0",
     "prop-types": "^15.6.0",
     "lodash": "^4.17.4",
     "dom-helpers":"^3.4.0"
