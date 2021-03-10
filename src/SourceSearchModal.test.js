@@ -1,8 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-// import renderWithIntl from '../test/jest/helpers/renderWithIntl';
+import translationsProperties from '../test/jest/helpers/translationsProperties';
+import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import SourceSearchModal from './SourceSearchModal';
 
 jest.mock('./SourceSearchContainer', () => {
@@ -26,13 +27,16 @@ const renderSourceSearchModal = (
   open = true,
   onClose = onCloseModal,
   selectSource = onSelectSource,
-) => (render(
-  <SourceSearchModal
-    selectSource={selectSource}
-    onClose={onClose}
-    open={open}
-  />,
-));
+) => (
+  renderWithIntl(
+    <SourceSearchModal
+      selectSource={selectSource}
+      onClose={onClose}
+      open={open}
+    />,
+    translationsProperties
+  )
+);
 
 describe('SourceSearchModal component', () => {
   it('should display source search modal', () => {
