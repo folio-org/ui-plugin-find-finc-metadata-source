@@ -1,8 +1,16 @@
 import React from 'react';
 import { noop } from 'lodash';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import '../test/jest/__mock__';
+// import translationsProperties from '../test/jest/helpers/translationsProperties';
+import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import SourcesView from './SourcesView';
+
+
+jest.mock('./SourceFilters', () => {
+  return () => <span>SourceFilters</span>;
+});
 
 const ARRAY_SOURCE = [
   {
@@ -19,10 +27,33 @@ const ARRAY_SOURCE = [
   }
 ];
 
-const renderSourceSASQ = (metadataSource = ARRAY_SOURCE, queryGetter = noop, querySetter = noop) => (
-  <SourcesView id="list-sources" data={metadataSource} queryGetter={queryGetter} querySetter={querySetter} />
-);
+const renderSourcesView = (
+  metadataSource = ARRAY_SOURCE,
+  queryGetter = noop,
+  querySetter = noop
+) => (renderWithIntl(
+  <Router>
+    <SourcesView
+      // id="list-sources"
+      data={metadataSource}
+      queryGetter={queryGetter}
+      querySetter={querySetter}
+    />
+  </Router>
+));
 
-it('list with metadata sources should be visible', () => {
-  expect(renderSourceSASQ('#list-sources')).toBeTruthy();
+describe('MetadataCollectionView', () => {
+  beforeEach(() => {
+    renderSourcesView();
+  });
+
+  // it('list with metadata sources should be visible', () => {
+  //   expect(renderSourcesView('#list-sources')).toBeTruthy();
+  //   expect(document.querySelector('#list-sources')).toBeInTheDocument();
+  // });
+
+  it('filter pane and searchField should be visible', () => {
+    expect(document.querySelector('#plugin-find-source-filter-pane')).toBeInTheDocument();
+    expect(document.querySelector('#sourceSearchField')).toBeInTheDocument();
+  });
 });

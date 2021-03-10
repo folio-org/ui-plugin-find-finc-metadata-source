@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+// import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import translationsProperties from '../test/jest/helpers/translationsProperties';

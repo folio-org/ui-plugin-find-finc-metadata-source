@@ -1,7 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
+import translationsProperties from '../test/jest/helpers/translationsProperties';
+import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import SourceSearch from './SourceSearch';
 
 jest.mock('./SourceSearchModal', () => {
@@ -11,11 +13,12 @@ jest.mock('./SourceSearchModal', () => {
 const renderSourceSearch = (
   disabled = false,
   renderTrigger,
-) => (render(
+) => (renderWithIntl(
   <SourceSearch
     disabled={disabled}
     renderTrigger={renderTrigger}
   />,
+  translationsProperties
 ));
 
 describe('SourceSearch component', () => {
