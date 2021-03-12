@@ -6,7 +6,7 @@
     "label": "Nazwa",
     "id": "ID",
     "status": "Status wdrożenia",
-    "solrShard": "Solar shard",
+    "solrShard": "SOLR Shard",
     "lastProcessed": "Ostatnio przetwarzane",
     "filterValue.active": "Aktywny",
     "filterValue.request": "Żądanie",
