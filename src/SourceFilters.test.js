@@ -6,7 +6,7 @@ import SourceFilters from './SourceFilters';
 const renderSourceFilter = () => (render(
   <SourceFilters
     activeFilters={{}}
-    applyFilters={jest.fn}
+    filterHandlers={{}}
   />,
 ));
 
