@@ -1,7 +1,7 @@
 import React from 'react';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { screen } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import '../test/jest/__mock__';
@@ -29,6 +29,8 @@ const ARRAY_SOURCE = [
   }
 ];
 
+const onChangeIndex = jest.fn();
+
 const renderSourcesView = (
   metadataSource = ARRAY_SOURCE,
   queryGetter = noop,
@@ -40,6 +42,7 @@ const renderSourcesView = (
       data={metadataSource}
       queryGetter={queryGetter}
       querySetter={querySetter}
+      onChangeIndex={onChangeIndex}
     />
   </Router>
 ));
@@ -89,12 +92,17 @@ describe('SourceView', () => {
     expect(screen.getByText('All')).toBeInTheDocument();
     expect(screen.getByText('Source Name')).toBeInTheDocument();
     expect(screen.getByText('Source ID')).toBeInTheDocument();
+  });
 
+  it('change search index', async () => {
     const searchFieldIndex = document.querySelector('#sourceSearchField-qindex');
-    userEvent.selectOptions(
-      searchFieldIndex,
-      ['sourceId']
-    );
+    await act(async () => {
+      userEvent.selectOptions(
+        searchFieldIndex,
+        ['sourceId']
+      );
+    });
+    expect(onChangeIndex).toHaveBeenCalled();
   });
 });
 
