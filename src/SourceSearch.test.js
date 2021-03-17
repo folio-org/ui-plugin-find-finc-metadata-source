@@ -11,11 +11,9 @@ jest.mock('./SourceSearchModal', () => {
 });
 
 const renderSourceSearch = (
-  disabled = false,
   renderTrigger,
 ) => (renderWithIntl(
   <SourceSearch
-    disabled={disabled}
     renderTrigger={renderTrigger}
   />,
   translationsProperties
@@ -30,7 +28,7 @@ describe('SourceSearch component', () => {
 
   it('should render trigger button', () => {
     const renderTrigger = jest.fn();
-    renderSourceSearch(false, renderTrigger);
+    renderSourceSearch(renderTrigger);
 
     expect(renderTrigger).toHaveBeenCalled();
   });

@@ -56,4 +56,9 @@ describe('MetadataCollectionView', () => {
     expect(document.querySelector('#plugin-find-source-filter-pane')).toBeInTheDocument();
     expect(document.querySelector('#sourceSearchField')).toBeInTheDocument();
   });
+
+  it('search field should be active element', () => {
+    const focusedElem = document.activeElement;
+    expect(focusedElem?.id).toBe('sourceSearchField');
+  });
 });
