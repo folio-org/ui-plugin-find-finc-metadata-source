@@ -1,6 +1,8 @@
 import React from 'react';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import '../test/jest/__mock__';
 // import translationsProperties from '../test/jest/helpers/translationsProperties';
@@ -42,7 +44,22 @@ const renderSourcesView = (
   </Router>
 ));
 
-describe('MetadataCollectionView', () => {
+// const renderEmptySourcesView = (
+//   metadataSource = [],
+//   queryGetter = noop,
+//   querySetter = noop
+// ) => (renderWithIntl(
+//   <Router>
+//     <SourcesView
+//       // id="list-sources"
+//       data={metadataSource}
+//       queryGetter={queryGetter}
+//       querySetter={querySetter}
+//     />
+//   </Router>
+// ));
+
+describe('SourceView', () => {
   beforeEach(() => {
     renderSourcesView();
   });
@@ -61,4 +78,32 @@ describe('MetadataCollectionView', () => {
     const focusedElem = document.activeElement;
     expect(focusedElem?.id).toBe('sourceSearchField');
   });
+
+  it('buttons for submit and reset should be visible', () => {
+    expect(document.querySelector('#sourceSubmitSearch')).toBeInTheDocument();
+    expect(document.querySelector('#clickable-reset-all')).toBeInTheDocument();
+  });
+
+  it('select box with values should be visible', () => {
+    expect(document.querySelector('#sourceSearchField-qindex')).toBeInTheDocument();
+    expect(screen.getByText('All')).toBeInTheDocument();
+    expect(screen.getByText('Source Name')).toBeInTheDocument();
+    expect(screen.getByText('Source ID')).toBeInTheDocument();
+
+    const searchFieldIndex = document.querySelector('#sourceSearchField-qindex');
+    userEvent.selectOptions(
+      searchFieldIndex,
+      ['sourceId']
+    );
+  });
 });
+
+// describe('SourceView empty', () => {
+//   beforeEach(() => {
+//     renderEmptySourcesView();
+//   });
+
+//   it('empty', () => {
+//     expect(screen.getByText('no source yet')).toBeInTheDocument();
+//   });
+// });
