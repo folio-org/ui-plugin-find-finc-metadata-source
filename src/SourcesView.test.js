@@ -1,7 +1,7 @@
 import React from 'react';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { screen, act } from '@testing-library/react';
+import { screen, act } from '@testing-library/react'; // waitFor
 import userEvent from '@testing-library/user-event';
 
 import '../test/jest/__mock__';
@@ -30,6 +30,7 @@ const ARRAY_SOURCE = [
 ];
 
 const onChangeIndex = jest.fn();
+const onSubmit = jest.fn();
 
 const renderSourcesView = (
   metadataSource = ARRAY_SOURCE,
@@ -43,6 +44,7 @@ const renderSourcesView = (
       queryGetter={queryGetter}
       querySetter={querySetter}
       onChangeIndex={onChangeIndex}
+      onSubmit={onSubmit}
     />
   </Router>
 ));
@@ -85,6 +87,7 @@ describe('SourceView', () => {
   it('buttons for submit and reset should be visible', () => {
     expect(document.querySelector('#sourceSubmitSearch')).toBeInTheDocument();
     expect(document.querySelector('#clickable-reset-all')).toBeInTheDocument();
+    expect(document.querySelector('#sourceSubmitSearch')).toHaveAttribute('disabled');
   });
 
   it('select box with values should be visible', () => {
@@ -104,6 +107,20 @@ describe('SourceView', () => {
     });
     expect(onChangeIndex).toHaveBeenCalled();
   });
+
+  // test('enter search string', async () => {
+  //   // const searchField = document.querySelector('#sourceSearchField');
+  //   // const searchButton = document.querySelector('#sourceSubmitSearch');
+
+  //   userEvent.type(
+  //     document.querySelector('#sourceSearchField'),
+  //     'source'
+  //   );
+  //   userEvent.click(document.querySelector('#sourceSubmitSearch'));
+
+  //   // await waitFor(() => expect(document.querySelector('#sourceSubmitSearch')).not.toHaveAttribute('disabled'));
+  //   expect(onSubmit).toHaveBeenCalled();
+  // });
 });
 
 // describe('SourceView empty', () => {
