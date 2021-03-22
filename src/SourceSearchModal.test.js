@@ -1,5 +1,4 @@
 import React from 'react';
-// import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import translationsProperties from '../test/jest/helpers/translationsProperties';
@@ -54,11 +53,11 @@ describe('SourceSearchModal component', () => {
 
   describe('Close source search modal', () => {
     it('should close source search modal', () => {
-      const { getByText } = renderSourceSearchModal(true, onCloseModal);
-      user.click(getByText('Icon'));
+      const { getByRole } = renderSourceSearchModal(true, onCloseModal);
+      // user.click(getByText('Icon'));
+      user.click(getByRole('button', { name: 'stripes-components.dismissModal' }));
 
       expect(onCloseModal).toHaveBeenCalled();
-    //   expect(screen.getByText('Select metadata source')).not.toBeInTheDocument();
     });
   });
 

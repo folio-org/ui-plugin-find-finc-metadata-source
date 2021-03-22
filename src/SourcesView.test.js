@@ -5,7 +5,7 @@ import { screen, act } from '@testing-library/react'; // waitFor
 import userEvent from '@testing-library/user-event';
 
 import '../test/jest/__mock__';
-// import translationsProperties from '../test/jest/helpers/translationsProperties';
+import translationsProperties from '../test/jest/helpers/translationsProperties';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import SourcesView from './SourcesView';
 
@@ -36,18 +36,20 @@ const renderSourcesView = (
   metadataSource = ARRAY_SOURCE,
   queryGetter = noop,
   querySetter = noop
-) => (renderWithIntl(
-  <Router>
-    <SourcesView
-      // id="list-sources"
-      data={metadataSource}
-      queryGetter={queryGetter}
-      querySetter={querySetter}
-      onChangeIndex={onChangeIndex}
-      onSubmit={onSubmit}
-    />
-  </Router>
-));
+) => (
+  renderWithIntl(
+    <Router>
+      <SourcesView
+        data={metadataSource}
+        queryGetter={queryGetter}
+        querySetter={querySetter}
+        onChangeIndex={onChangeIndex}
+        onSubmit={onSubmit}
+      />
+    </Router>,
+    translationsProperties
+  )
+);
 
 // const renderEmptySourcesView = (
 //   metadataSource = [],

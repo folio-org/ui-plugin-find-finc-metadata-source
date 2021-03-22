@@ -1,5 +1,4 @@
 import React from 'react';
-// import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import translationsProperties from '../test/jest/helpers/translationsProperties';
@@ -12,12 +11,14 @@ jest.mock('./SourceSearchModal', () => {
 
 const renderSourceSearch = (
   renderTrigger,
-) => (renderWithIntl(
-  <SourceSearch
-    renderTrigger={renderTrigger}
-  />,
-  translationsProperties
-));
+) => (
+  renderWithIntl(
+    <SourceSearch
+      renderTrigger={renderTrigger}
+    />,
+    translationsProperties
+  )
+);
 
 describe('SourceSearch component', () => {
   it('should display search source button', () => {

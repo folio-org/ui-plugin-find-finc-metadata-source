@@ -1,15 +1,10 @@
 import React from 'react';
 import { render, act } from '@testing-library/react';
-// import user from '@testing-library/user-event';
 
 import SourceSearchContainer from './SourceSearchContainer';
 
 jest.mock('./SourcesView', () => {
-  // eslint-disable-next-line react/prop-types
-  return () => (
-    <>
-    </>
-  );
+  return () => <span>SourcesView</span>;
 });
 
 const renderSourceSearchContainer = (mutator) => (render(

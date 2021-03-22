@@ -3,12 +3,14 @@ import { render } from '@testing-library/react';
 
 import SourceFilters from './SourceFilters';
 
-const renderSourceFilter = () => (render(
-  <SourceFilters
-    activeFilters={{}}
-    filterHandlers={{}}
-  />,
-));
+const renderSourceFilter = () => (
+  render(
+    <SourceFilters
+      activeFilters={{}}
+      filterHandlers={{}}
+    />,
+  )
+);
 
 describe('SourceFilters component', () => {
   it('should display filters', () => {
