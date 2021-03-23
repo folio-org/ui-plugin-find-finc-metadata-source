@@ -110,19 +110,21 @@ describe('SourceView', () => {
     expect(onChangeIndex).toHaveBeenCalled();
   });
 
-  // test('enter search string', async () => {
-  //   // const searchField = document.querySelector('#sourceSearchField');
-  //   // const searchButton = document.querySelector('#sourceSubmitSearch');
+  test('enter search string should enable submit button', async () => {
+    // const searchField = document.querySelector('#sourceSearchField');
+    const searchButton = document.querySelector('#sourceSubmitSearch');
 
-  //   userEvent.type(
-  //     document.querySelector('#sourceSearchField'),
-  //     'source'
-  //   );
-  //   userEvent.click(document.querySelector('#sourceSubmitSearch'));
+    expect(searchButton).toHaveAttribute('disabled');
 
-  //   // await waitFor(() => expect(document.querySelector('#sourceSubmitSearch')).not.toHaveAttribute('disabled'));
-  //   expect(onSubmit).toHaveBeenCalled();
-  // });
+    userEvent.type(
+      document.querySelector('#sourceSearchField'),
+      'source'
+    );
+
+    expect(searchButton).not.toHaveAttribute('disabled');
+    // userEvent.click(document.querySelector('#sourceSubmitSearch'));
+    // expect(onSubmit).toHaveBeenCalled();
+  });
 });
 
 // describe('SourceView empty', () => {
