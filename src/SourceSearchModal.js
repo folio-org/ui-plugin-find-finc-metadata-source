@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { FormattedMessage } from 'react-intl';
 import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -35,7 +34,6 @@ class SourceSearchModal extends Component {
       <Modal
         contentClass={css.modalContent}
         dismissible
-        // label={<FormattedMessage id="ui-plugin-find-finc-metadata-source.modal.label" />}
         label={this.props.intl.formatMessage({ id: 'ui-plugin-find-finc-metadata-source.modal.label' })}
         onClose={this.props.onClose}
         open={this.props.open}

@@ -42,7 +42,6 @@ describe('SourceSearchModal component', () => {
     const { getByText } = renderSourceSearchModal();
 
     expect(getByText('ui-plugin-find-finc-metadata-source.modal.label')).toBeDefined();
-    // expect(screen.getByText('Select metadata source')).toBeInTheDocument();
   });
 
   it('should not display source search modal', () => {
@@ -54,7 +53,6 @@ describe('SourceSearchModal component', () => {
   describe('Close source search modal', () => {
     it('should close source search modal', () => {
       const { getByRole } = renderSourceSearchModal(true, onCloseModal);
-      // user.click(getByText('Icon'));
       user.click(getByRole('button', { name: 'stripes-components.dismissModal' }));
 
       expect(onCloseModal).toHaveBeenCalled();

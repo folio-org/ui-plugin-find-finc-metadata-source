@@ -1,14 +1,13 @@
 import React from 'react';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { screen, act } from '@testing-library/react'; // waitFor
+import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import '../test/jest/__mock__';
 import translationsProperties from '../test/jest/helpers/translationsProperties';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import SourcesView from './SourcesView';
-
 
 jest.mock('./SourceFilters', () => {
   return () => <span>SourceFilters</span>;
@@ -51,30 +50,10 @@ const renderSourcesView = (
   )
 );
 
-// const renderEmptySourcesView = (
-//   metadataSource = [],
-//   queryGetter = noop,
-//   querySetter = noop
-// ) => (renderWithIntl(
-//   <Router>
-//     <SourcesView
-//       // id="list-sources"
-//       data={metadataSource}
-//       queryGetter={queryGetter}
-//       querySetter={querySetter}
-//     />
-//   </Router>
-// ));
-
 describe('SourceView', () => {
   beforeEach(() => {
     renderSourcesView();
   });
-
-  // it('list with metadata sources should be visible', () => {
-  //   expect(renderSourcesView('#list-sources')).toBeTruthy();
-  //   expect(document.querySelector('#list-sources')).toBeInTheDocument();
-  // });
 
   it('filter pane and searchField should be visible', () => {
     expect(document.querySelector('#plugin-find-source-filter-pane')).toBeInTheDocument();
@@ -111,7 +90,6 @@ describe('SourceView', () => {
   });
 
   test('enter search string should enable submit button', async () => {
-    // const searchField = document.querySelector('#sourceSearchField');
     const searchButton = document.querySelector('#sourceSubmitSearch');
 
     expect(searchButton).toHaveAttribute('disabled');
@@ -122,17 +100,5 @@ describe('SourceView', () => {
     );
 
     expect(searchButton).not.toHaveAttribute('disabled');
-    // userEvent.click(document.querySelector('#sourceSubmitSearch'));
-    // expect(onSubmit).toHaveBeenCalled();
   });
 });
-
-// describe('SourceView empty', () => {
-//   beforeEach(() => {
-//     renderEmptySourcesView();
-//   });
-
-//   it('empty', () => {
-//     expect(screen.getByText('no source yet')).toBeInTheDocument();
-//   });
-// });
