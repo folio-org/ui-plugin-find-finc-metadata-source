@@ -23,8 +23,9 @@
   },
   "scripts": {
     "test": "yarn run test:jest",
-    "test:jest": "jest --ci --coverage",
-    "lint": "eslint ."
+    "test:jest": "jest --ci --coverage --silent",
+    "lint": "eslint .",
+    "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-finc-metadata-source ./translations/ui-plugin-find-finc-metadata-source/compiled"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.10.5",
@@ -36,6 +37,7 @@
     "@folio/stripes-components": "^9.0.0",
     "@folio/stripes-core": "^7.0.0",
     "@folio/stripes-smart-components": "^6.0.0",
+    "@formatjs/cli": "^4.2.17",
     "@testing-library/dom": "^7.26.6",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",
