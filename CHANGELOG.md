@@ -1,5 +1,9 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
+## 3.0.1 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v3.0.1) (2021-06-14)
+* Replace bigtest by rtl jest  (UIFC-232)
+* Translation ast (UIFC-250)
+
 ## 3.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v3.0.0) (2021-03-18)
 * Increment `@folio/stripes` to `v6.0` (UIFC-235)
 
