@@ -4,7 +4,7 @@ Copyright (C) 2019 The Open Library Foundation
 
 This software is distributed under the terms of the Apache License, Version 2.0. See the file "[LICENSE](LICENSE)" for more information.
 
-<img alt="EFRE-Lod logo" src="https://github.com/folio-org/ui-plugin-find-finc-metadata-source/blob/master/EFRE-logo-2015-quer-RGB.jpg" width="500" >
+<img alt="EFRE-Lod logo" src="https://github.com/folio-org/ui-plugin-find-finc-metadata-source/blob/master/EFRE_2015_quer_RGB_klein.jpg" width="500" >
 
 ## Introduction
 
