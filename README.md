@@ -4,6 +4,8 @@ Copyright (C) 2019 The Open Library Foundation
 
 This software is distributed under the terms of the Apache License, Version 2.0. See the file "[LICENSE](LICENSE)" for more information.
 
+<img alt="EFRE-Lod logo" src="https://raw.githubusercontent.com/slub/data.slub-dresden.de/master/assets/images/EFRE_EU_quer_2015_rgb_engl.svg">
+
 ## Introduction
 
 Congratulations on creating a new Stripes UI app module!  Follow the instructions below to run ui-plugin-find-finc-metadata-source and start your development.
