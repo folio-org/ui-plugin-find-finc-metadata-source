@@ -63,7 +63,7 @@ class SourceSearch extends Component {
     } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         {renderTrigger ?
           this.renderTriggerButton() :
           <FormattedMessage id="ui-plugin-find-finc-metadata-source.searchButton.title">
@@ -88,7 +88,7 @@ class SourceSearch extends Component {
           open={this.state.openModal}
           {...this.props}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
