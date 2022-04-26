@@ -1,4 +1,3 @@
-import React from 'react';
 import user from '@testing-library/user-event';
 
 import translationsProperties from '../test/jest/helpers/translationsProperties';

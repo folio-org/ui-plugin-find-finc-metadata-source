@@ -1,4 +1,3 @@
-import React from 'react';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { screen, act } from '@testing-library/react';

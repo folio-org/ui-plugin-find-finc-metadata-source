@@ -1,7 +1,6 @@
 import ApplicationSerializer from './application';
 
 const { isArray } = Array;
-const { assign } = Object;
 
 export default ApplicationSerializer.extend({
 
@@ -9,9 +8,9 @@ export default ApplicationSerializer.extend({
     const json = ApplicationSerializer.prototype.serialize.apply(this, args);
 
     if (isArray(json.fincConfigMetadataSources)) {
-      return assign({}, json, {
+      return {
         totalRecords: json.fincConfigMetadataSources.length
-      });
+      };
     } else {
       return json.fincConfigMetadataSources;
     }
