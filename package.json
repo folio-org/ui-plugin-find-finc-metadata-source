@@ -27,6 +27,7 @@
     "test": "yarn run test:jest",
     "test:jest": "jest --ci --coverage --silent",
     "lint": "eslint .",
+    "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-finc-metadata-source ./translations/ui-plugin-find-finc-metadata-source/compiled"
   },
   "devDependencies": {
