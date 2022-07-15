@@ -7,10 +7,10 @@
     "id": "ID",
     "status": "Implementation status",
     "solrShard": "Solar shard",
-    "lastProcessed": "Last processed",
-    "filterValue.active": "Active",
+    "lastProcessed": "Zuletzt verarbeitet",
+    "filterValue.active": "Aktiv",
     "filterValue.request": "Request",
     "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Closed",
-    "filterValue.impossible": "Impossible"
+    "filterValue.closed": "Abgeschlossen",
+    "filterValue.impossible": "Unmöglich"
 }
