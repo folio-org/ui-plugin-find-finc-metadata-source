@@ -9,7 +9,7 @@
     "solrShard": "Solar shard",
     "lastProcessed": "Last processed",
     "filterValue.active": "Active",
-    "filterValue.request": "Request",
+    "filterValue.request": "Vyžádat",
     "filterValue.implementation": "Implementation",
     "filterValue.closed": "Closed",
     "filterValue.impossible": "Impossible"
