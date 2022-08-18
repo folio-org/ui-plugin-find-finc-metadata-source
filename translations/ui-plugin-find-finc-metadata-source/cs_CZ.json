@@ -3,14 +3,14 @@
     "modal.label": "Select metadata source",
     "searchButton.title": "Find metadata source",
     "modal.paneTitle": "Metadata sources",
-    "label": "Name",
+    "label": "Název",
     "id": "ID",
     "status": "Implementation status",
     "solrShard": "Solar shard",
     "lastProcessed": "Last processed",
-    "filterValue.active": "Active",
+    "filterValue.active": "Aktivní",
     "filterValue.request": "Vyžádat",
-    "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Closed",
-    "filterValue.impossible": "Impossible"
+    "filterValue.implementation": "Implementace",
+    "filterValue.closed": "Uzavřeno",
+    "filterValue.impossible": "Nemožné"
 }
