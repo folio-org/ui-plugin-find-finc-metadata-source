@@ -9,7 +9,7 @@
     "solrShard": "solr碎片",
     "lastProcessed": "上次处理",
     "filterValue.active": "激活",
-    "filterValue.request": "请求",
+    "filterValue.request": "請求",
     "filterValue.implementation": "实施",
     "filterValue.closed": "已关闭",
     "filterValue.impossible": "不可能"
