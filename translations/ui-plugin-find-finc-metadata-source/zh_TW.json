@@ -8,7 +8,7 @@
     "status": "实施状态",
     "solrShard": "solr碎片",
     "lastProcessed": "上次处理",
-    "filterValue.active": "激活",
+    "filterValue.active": "啟用",
     "filterValue.request": "請求",
     "filterValue.implementation": "实施",
     "filterValue.closed": "已关闭",
