@@ -1,5 +1,8 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
+## 4.1.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.1.0) (2022-11-15)
+* Replace babel eslint (UIFC-272)
+
 ## 4.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.0.0) (2021-10-04)
 * Increment stripes to v7 (UIFC-253)
 
