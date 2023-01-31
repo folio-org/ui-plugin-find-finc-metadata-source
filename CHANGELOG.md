@@ -1,5 +1,8 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
+## 5.0.0 (IN PROGRESS)
+* Bump Stripes to v8 and drop unneeded `react-redux`, `redux`, `stripes-acq-components` ([UIFC-293](https://issues.folio.org/browse/UIFC-293))
+
 ## 4.1.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.1.0) (2022-11-15)
 * Replace babel eslint (UIFC-272)
 
