@@ -124,7 +124,7 @@ export default class SourcesView extends React.Component {
     return (
       <div data-test-sources ref={contentRef}>
         <SearchAndSortQuery
-          initialFilterState={{ status: ['active', 'technical implementation'] }}
+          initialFilterState={{ status: ['active', 'implementation'] }}
           initialSearchState={{ query: '' }}
           initialSortState={{ sort: 'label' }}
           queryGetter={queryGetter}
