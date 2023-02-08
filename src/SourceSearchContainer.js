@@ -39,7 +39,13 @@ class SourceSearchContainer extends React.Component {
         staticFallback: { params: {} },
       },
     },
-    query: { initialValue: {} },
+    query: {
+      initialValue: {
+        query: '',
+        filters: 'status.active,status.implementation',
+        sort: ''
+      }
+    },
     resultCount: { initialValue: INITIAL_RESULT_COUNT },
   });
 
@@ -67,7 +73,7 @@ class SourceSearchContainer extends React.Component {
     }
 
     this.props.mutator.query.update({
-      filters: 'status.active,status.technical implementation',
+      filters: 'status.active,status.implementation',
     });
   }
 
