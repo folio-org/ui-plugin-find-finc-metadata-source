@@ -2,7 +2,7 @@
 
 ## 5.1.0 (IN PROGRESS)
 
-## 5.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.0.0) (2022-02-23)
+## 5.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.0.0) (2023-02-23)
 * Bump Stripes to v8, `stripes-acq-components`to v4  and drop unneeded `react-redux`, `redux` ([UIFC-293](https://issues.folio.org/browse/UIFC-293))
 * No results shown on first open ([UIFC-298](https://issues.folio.org/browse/UIFC-298))
 
