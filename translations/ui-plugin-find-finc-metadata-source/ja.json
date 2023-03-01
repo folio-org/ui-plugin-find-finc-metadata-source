@@ -9,8 +9,8 @@
     "solrShard": "Solar shard",
     "lastProcessed": "Last processed",
     "filterValue.active": "有効",
-    "filterValue.request": "Request",
-    "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Closed",
-    "filterValue.impossible": "Impossible"
+    "filterValue.request": "リクエスト",
+    "filterValue.implementation": "インプリメンテーション",
+    "filterValue.closed": "完了",
+    "filterValue.impossible": "不可能"
 }
