@@ -3,7 +3,7 @@
     "modal.label": "Select metadata source",
     "searchButton.title": "メタデータ ソースの検索",
     "modal.paneTitle": "Metadata sources",
-    "label": "Name",
+    "label": "名前",
     "id": "ID",
     "status": "Implementation status",
     "solrShard": "Solar shard",
