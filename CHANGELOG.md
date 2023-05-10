@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
 ## 5.2.0 (IN PROGRESS)
+* Replace BigTest tests ([UIFC-287](https://issues.folio.org/browse/UIFC-287))
 
 ## 5.1.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.1.0) (2023-03-16)
 * Translations update
