@@ -1,29 +1,30 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
-## 5.2.0 (IN PROGRESS)
+## 6.0.0 (IN PROGRESS)
+* Upgrade React to v18 ([UIFC-319](https://issues.folio.org/browse/UIFC-319))
 * Replace BigTest tests ([UIFC-287](https://issues.folio.org/browse/UIFC-287))
 
-## 5.1.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.1.0) (2023-03-16)
+## [5.1.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.1.0) (2023-03-16)
 * Translations update
 
-## 5.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.0.0) (2023-02-23)
+## [5.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v5.0.0) (2023-02-23)
 * Bump Stripes to v8, `stripes-acq-components`to v4  and drop unneeded `react-redux`, `redux` ([UIFC-293](https://issues.folio.org/browse/UIFC-293))
 * No results shown on first open ([UIFC-298](https://issues.folio.org/browse/UIFC-298))
 
-## 4.1.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.1.0) (2022-11-15)
+## [4.1.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.1.0) (2022-11-15)
 * Replace babel eslint (UIFC-272)
 
-## 4.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.0.0) (2021-10-04)
+## [4.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v4.0.0) (2021-10-04)
 * Increment stripes to v7 (UIFC-253)
 
-## 3.0.1 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v3.0.1) (2021-06-14)
+## [3.0.1](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v3.0.1) (2021-06-14)
 * Replace bigtest by rtl jest  (UIFC-232)
 * Translation ast (UIFC-250)
 
-## 3.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v3.0.0) (2021-03-18)
+## [3.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v3.0.0) (2021-03-18)
 * Increment `@folio/stripes` to `v6.0` (UIFC-235)
 
-## 2.0.0 (https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v2.0.0) (2020-10-15)
+## [2.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v2.0.0) (2020-10-15)
 * Increment `@folio/stripes` to `v5.0` and `react-router` to `v5.2` (and, bugfix, move it to peer)
 
 ## [1.2.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v1.2.0) (2020-09-08)
