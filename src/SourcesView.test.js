@@ -1,11 +1,9 @@
+import { screen } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { screen, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
-import '../test/jest/__mock__';
-import translationsProperties from '../test/jest/helpers/translationsProperties';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
+import translationsProperties from '../test/jest/helpers/translationsProperties';
 import SourcesView from './SourcesView';
 
 jest.mock('./SourceFilters', () => {
@@ -24,17 +22,13 @@ const ARRAY_SOURCE = [
     label: 'Test source 2',
     sourceId: 2,
     status: 'active',
-  }
+  },
 ];
 
 const onChangeIndex = jest.fn();
 const onSubmit = jest.fn();
 
-const renderSourcesView = (
-  metadataSource = ARRAY_SOURCE,
-  queryGetter = noop,
-  querySetter = noop
-) => (
+const renderSourcesView = (metadataSource = ARRAY_SOURCE, queryGetter = noop, querySetter = noop) =>
   renderWithIntl(
     <Router>
       <SourcesView
@@ -46,8 +40,7 @@ const renderSourcesView = (
       />
     </Router>,
     translationsProperties
-  )
-);
+  );
 
 describe('SourceView', () => {
   beforeEach(() => {
@@ -79,12 +72,7 @@ describe('SourceView', () => {
 
   it('change search index', async () => {
     const searchFieldIndex = document.querySelector('#sourceSearchField-qindex');
-    await act(async () => {
-      userEvent.selectOptions(
-        searchFieldIndex,
-        ['sourceId']
-      );
-    });
+    await userEvent.selectOptions(searchFieldIndex, ['sourceId']);
     expect(onChangeIndex).toHaveBeenCalled();
   });
 
@@ -93,11 +81,8 @@ describe('SourceView', () => {
 
     expect(searchButton).toHaveAttribute('disabled');
 
-    userEvent.type(
-      document.querySelector('#sourceSearchField'),
-      'source'
-    );
+    await userEvent.type(document.querySelector('#sourceSearchField'), 'source');
 
-    expect(searchButton).not.toHaveAttribute('disabled');
+    expect(searchButton).toBeEnabled();
   });
 });

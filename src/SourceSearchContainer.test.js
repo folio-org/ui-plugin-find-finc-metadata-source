@@ -1,5 +1,4 @@
-import { render, act } from '@testing-library/react';
-
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import SourceSearchContainer from './SourceSearchContainer';
 
 jest.mock('./SourcesView', () => {
@@ -21,9 +20,7 @@ describe('SourceSearchContainer component', () => {
   });
 
   it('should update query when plugin is open', async () => {
-    await act(async () => {
-      renderSourceSearchContainer(mutator);
-    });
+    renderSourceSearchContainer(mutator);
 
     expect(mutator.query.update).toHaveBeenCalled();
   });

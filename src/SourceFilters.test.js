@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react';
-
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import SourceFilters from './SourceFilters';
 
 const renderSourceFilter = () => (
@@ -13,9 +12,9 @@ const renderSourceFilter = () => (
 
 describe('SourceFilters component', () => {
   it('should display filters', () => {
-    const { getByText } = renderSourceFilter();
+    renderSourceFilter();
 
-    expect(getByText('ui-plugin-find-finc-metadata-source.status')).toBeDefined();
-    expect(getByText('ui-plugin-find-finc-metadata-source.solrShard')).toBeDefined();
+    expect(screen.getByText('ui-plugin-find-finc-metadata-source.status')).toBeInTheDocument();
+    expect(screen.getByText('ui-plugin-find-finc-metadata-source.solrShard')).toBeInTheDocument();
   });
 });
