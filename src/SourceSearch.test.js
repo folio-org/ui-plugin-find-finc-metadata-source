@@ -1,7 +1,7 @@
+import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-
-import translationsProperties from '../test/jest/helpers/translationsProperties';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
+import translationsProperties from '../test/jest/helpers/translationsProperties';
 import SourceSearch from './SourceSearch';
 
 jest.mock('./SourceSearchModal', () => {
@@ -21,9 +21,9 @@ const renderSourceSearch = (
 
 describe('SourceSearch component', () => {
   it('should display search source button', () => {
-    const { getByTestId } = renderSourceSearch();
+    renderSourceSearch();
 
-    expect(getByTestId('open-source-seach-modal-button')).toBeDefined();
+    expect(screen.getByTestId('open-source-seach-modal-button')).toBeInTheDocument();
   });
 
   it('should render trigger button', () => {
@@ -33,10 +33,10 @@ describe('SourceSearch component', () => {
     expect(renderTrigger).toHaveBeenCalled();
   });
 
-  it('should open source search modal', () => {
-    const { getByText, getByTestId } = renderSourceSearch();
-    user.click(getByTestId('open-source-seach-modal-button'));
+  it('should open source search modal', async () => {
+    renderSourceSearch();
+    await user.click(screen.getByTestId('open-source-seach-modal-button'));
 
-    expect(getByText('SourceSearchModal')).toBeDefined();
+    expect(screen.getByText('SourceSearchModal')).toBeInTheDocument();
   });
 });
