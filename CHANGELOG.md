@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
-## 6.0.0 (IN PROGRESS)
+## 6.1.0 (IN PROGRESS)
+
+## [6.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v6.0.0) (2023-10-18)
 * Migrate to react-intl v6 ([UIFC-328](https://issues.folio.org/browse/UIFC-328))
 * Upgrade React to v18 ([UIFC-319](https://issues.folio.org/browse/UIFC-319))
 * Replace BigTest tests ([UIFC-287](https://issues.folio.org/browse/UIFC-287))
