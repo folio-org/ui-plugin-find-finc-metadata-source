@@ -8,9 +8,9 @@
     "status": "Implementation status",
     "solrShard": "Solar shard",
     "lastProcessed": "Last processed",
-    "filterValue.active": "Activo",
+    "filterValue.active": "Active",
     "filterValue.request": "Request",
     "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Cerrado",
+    "filterValue.closed": "Closed",
     "filterValue.impossible": "Impossible"
 }
