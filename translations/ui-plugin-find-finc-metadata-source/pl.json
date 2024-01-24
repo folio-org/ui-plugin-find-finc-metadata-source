@@ -9,7 +9,7 @@
     "solrShard": "SOLR Shard",
     "lastProcessed": "Ostatnio przetwarzane",
     "filterValue.active": "Aktywny",
-    "filterValue.request": "Żądanie",
+    "filterValue.request": "Rezerwacja",
     "filterValue.implementation": "Wdrożenie",
     "filterValue.closed": "Zamknięte",
     "filterValue.impossible": "Niemożliwe"
