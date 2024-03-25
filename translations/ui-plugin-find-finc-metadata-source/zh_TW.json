@@ -1,16 +1,16 @@
 {
-    "meta.title": "插件查找finc元数据源",
+    "meta.title": "查找finc詮釋資料來源(外掛程式)",
     "modal.label": "選擇詮釋資料來源",
     "searchButton.title": "查詢詮釋資料來源",
-    "modal.paneTitle": "元数据来源",
+    "modal.paneTitle": "詮釋資料來源",
     "label": "名稱",
     "id": "ID",
-    "status": "实施状态",
-    "solrShard": "solr碎片",
-    "lastProcessed": "上次处理",
+    "status": "執行狀態",
+    "solrShard": "Solar shard",
+    "lastProcessed": "最後處理",
     "filterValue.active": "啟用",
     "filterValue.request": "請求",
-    "filterValue.implementation": "实施",
-    "filterValue.closed": "已关闭",
+    "filterValue.implementation": "執行",
+    "filterValue.closed": "已闗閉",
     "filterValue.impossible": "不可能"
 }
