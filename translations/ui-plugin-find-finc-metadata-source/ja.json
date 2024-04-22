@@ -1,6 +1,6 @@
 {
     "meta.title": "plugin-find-finc-metadata-source",
-    "modal.label": "Select metadata source",
+    "modal.label": "メタデータソースの選択",
     "searchButton.title": "メタデータ ソースの検索",
     "modal.paneTitle": "Metadata sources",
     "label": "名前",
