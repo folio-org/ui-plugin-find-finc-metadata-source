@@ -87,4 +87,28 @@ describe('SourceView', () => {
 
     expect(searchButton).toBeEnabled();
   });
+
+  test('if collapse filter pane is working', async () => {
+    expect(document.querySelector('#paneHeaderplugin-find-source-filter-pane-pane-title')).toBeInTheDocument();
+    expect(document.querySelector('[data-test-collapse-filter-pane-button]')).toBeInTheDocument();
+
+    await userEvent.click(document.querySelector('[data-test-collapse-filter-pane-button]'));
+
+    expect(document.querySelector('#paneHeaderplugin-find-source-filter-pane-pane-title')).not.toBeInTheDocument();
+    expect(document.querySelector('[data-test-expand-filter-pane-button]')).toBeInTheDocument();
+
+    await userEvent.hover(document.querySelector('[data-test-expand-filter-pane-button]'));
+
+    const filterCountDisplay = document.querySelector('#expand-filter-pane-button-tooltip-sub');
+    expect(filterCountDisplay).toBeInTheDocument();
+
+    const expandFilterButton = document.querySelector('[data-test-expand-filter-pane-button]');
+
+    const badge = expandFilterButton.querySelector('.badge .label');
+    expect(badge).toHaveTextContent('2');
+
+    await userEvent.click(expandFilterButton);
+
+    expect(document.querySelector('#paneHeaderplugin-find-source-filter-pane-pane-title')).toBeInTheDocument();
+  });
 });
