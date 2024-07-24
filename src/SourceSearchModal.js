@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { injectIntl } from 'react-intl';
-import PropTypes from 'prop-types';
 
 import { Modal } from '@folio/stripes/components';
 

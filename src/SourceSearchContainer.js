@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import { useEffect, useRef } from 'react';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -26,18 +26,9 @@ const SourceSearchContainer = ({
     if (searchField.current) {
       searchField.current.focus();
     }
-
-    // mutator.query.update({
-    //   filters: 'status.active,status.implementation',
-    // });
   }, []);
 
   const source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'metadataSources');
-
-  // if (source) {
-  //   source.update({ resources, mutator }, 'metadataSources');
-  // }
-
   const sources = get(resources, 'metadataSources.records', []);
 
   const querySetter = ({ nsValues }) => {

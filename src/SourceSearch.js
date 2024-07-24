@@ -1,11 +1,11 @@
-import { useState, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import contains from 'dom-helpers/query/contains';
+import { useState, useRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
-  Icon
+  Icon,
 } from '@folio/stripes/components';
 
 import SourceSearchModal from './SourceSearchModal';
@@ -43,7 +43,6 @@ const SourceSearch = ({
       onClick: openModal,
     });
   };
-
 
   return (
     <>
