@@ -1,5 +1,4 @@
 import { render } from '@folio/jest-config-stripes/testing-library/react';
-
 import { StripesConnectedSource } from '@folio/stripes/smart-components';
 
 import SourceSearchContainer from './SourceSearchContainer';
@@ -31,9 +30,12 @@ const stripes = {
   }
 };
 
+const onChangeIndex = jest.fn();
+
 const renderSourceSearchContainer = (props = {}) => (render(
   <SourceSearchContainer
     mutator={mutator}
+    onChangeIndex={onChangeIndex}
     onSelectRow={jest.fn}
     resources={resources}
     stripes={stripes}
@@ -120,5 +122,15 @@ describe('SourceSearchContainer component', () => {
     const [sourcesViewProps] = SourcesView.mock.calls[0];
 
     expect(sourcesViewProps.data).toEqual([{ id: '1' }]);
+  });
+
+  it('should call onChangeIndex', async () => {
+    renderSourceSearchContainer();
+
+    const [sourcesViewProps] = SourcesView.mock.calls[0];
+    const nsValues = { qindex: 'label' };
+    sourcesViewProps.querySetter({ nsValues });
+
+    expect(mutator.query.update).toHaveBeenCalledWith(nsValues);
   });
 });

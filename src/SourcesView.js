@@ -230,7 +230,7 @@ const SourcesView = ({
   );
 };
 
-SourcesView.propTypes = Object.freeze({
+SourcesView.propTypes = {
   contentRef: PropTypes.object,
   data: PropTypes.arrayOf(PropTypes.object),
   onNeedMoreData: PropTypes.func,
@@ -243,6 +243,6 @@ SourcesView.propTypes = Object.freeze({
     totalCount: PropTypes.func
   }),
   visibleColumns: PropTypes.arrayOf(PropTypes.string)
-});
+};
 
 export default SourcesView;

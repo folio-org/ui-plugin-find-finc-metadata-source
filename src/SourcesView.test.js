@@ -1,7 +1,9 @@
-import { screen } from '@folio/jest-config-stripes/testing-library/react';
-import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+import { screen } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
+
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import translationsProperties from '../test/jest/helpers/translationsProperties';
 import SourcesView from './SourcesView';
