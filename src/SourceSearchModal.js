@@ -1,52 +1,54 @@
-import React, { Component } from 'react';
-import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import { useRef } from 'react';
+import { injectIntl } from 'react-intl';
 
 import { Modal } from '@folio/stripes/components';
 
 import SourceSearchContainer from './SourceSearchContainer';
 import css from './SourceSearch.css';
 
-class SourceSearchModal extends Component {
-  static propTypes = {
-    modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-    onClose: PropTypes.func.isRequired,
-    open: PropTypes.bool,
-    selectSource: PropTypes.func,
-    intl: PropTypes.shape({
-      formatMessage: PropTypes.func.isRequired,
-    }),
+const SourceSearchModal = ({
+  modalRef,
+  onClose,
+  open,
+  selectSource,
+  intl,
+  ...props
+}) => {
+  const backupModalRef = useRef(null);
+  const internalModalRef = modalRef || backupModalRef;
+
+  const onSelectSource = (e, source) => {
+    selectSource(source);
+    onClose();
   };
 
-  constructor(props) {
-    super(props);
+  return (
+    <Modal
+      contentClass={css.modalContent}
+      dismissible
+      label={intl.formatMessage({ id: 'ui-plugin-find-finc-metadata-source.modal.label' })}
+      onClose={onClose}
+      open={open}
+      ref={internalModalRef}
+      size="large"
+    >
+      <SourceSearchContainer
+        onSelectRow={onSelectSource}
+        {...props}
+      />
+    </Modal>
+  );
+};
 
-    this.modalRef = props.modalRef || React.createRef();
-  }
-
-  selectSource = (e, source) => {
-    this.props.selectSource(source);
-    this.props.onClose();
-  };
-
-  render() {
-    return (
-      <Modal
-        contentClass={css.modalContent}
-        dismissible
-        label={this.props.intl.formatMessage({ id: 'ui-plugin-find-finc-metadata-source.modal.label' })}
-        onClose={this.props.onClose}
-        open={this.props.open}
-        ref={this.modalRef}
-        size="large"
-      >
-        <SourceSearchContainer
-          onSelectRow={this.selectSource}
-          {...this.props}
-        />
-      </Modal>
-    );
-  }
-}
+SourceSearchModal.propTypes = {
+  modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool,
+  selectSource: PropTypes.func,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }),
+};
 
 export default injectIntl(SourceSearchModal);

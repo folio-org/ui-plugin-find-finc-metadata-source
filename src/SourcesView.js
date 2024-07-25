@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import React from 'react';
 import PropTypes from 'prop-types';
+import { get, noop, upperFirst } from 'lodash';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -28,25 +28,37 @@ const searchableIndexes = [
   { label: 'Source ID', value: 'sourceId', makeQuery: term => `(sourceId="${term}*")` }
 ];
 
-export default class SourcesView extends React.Component {
-  static propTypes = {
-    onChangeIndex: PropTypes.func,
-  }
+const SourcesView = ({
+  contentRef,
+  data = {},
+  onNeedMoreData,
+  onChangeIndex,
+  onSelectRow,
+  queryGetter,
+  querySetter,
+  searchField,
+  source,
+  visibleColumns = ['label', 'sourceId', 'status', 'solrShard', 'lastProcessed'],
+}) => {
+  const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
 
-  static defaultProps = {
-    data: {},
-    visibleColumns: ['label', 'sourceId', 'status', 'solrShard', 'lastProcessed'],
-  }
+  const query = queryGetter() || {};
+  const count = source ? source.totalCount() : 0;
+  const sortOrder = query.sort || '';
 
-  constructor(props) {
-    super(props);
+  const resultsStatusMessage = source ? (
+    <div data-test-find-source-no-results-message>
+      <NoResultsMessage
+        data-test-find-source-no-results-message
+        filterPaneIsVisible
+        searchTerm={query.query || ''}
+        source={source}
+        toggleFilterPane={noop}
+      />
+    </div>
+  ) : 'no source yet';
 
-    this.state = {
-      filterPaneIsVisible: true,
-    };
-  }
-
-  columnMapping = {
+  const columnMapping = {
     label: <FormattedMessage id="ui-plugin-find-finc-metadata-source.label" />,
     sourceId: <FormattedMessage id="ui-plugin-find-finc-metadata-source.id" />,
     status: <FormattedMessage id="ui-plugin-find-finc-metadata-source.status" />,
@@ -54,7 +66,7 @@ export default class SourcesView extends React.Component {
     lastProcessed: <FormattedMessage id="ui-plugin-find-finc-metadata-source.lastProcessed" />,
   };
 
-  columnWidths = {
+  const columnWidths = {
     label: 250,
     sourceId: 50,
     status: 200,
@@ -62,24 +74,21 @@ export default class SourcesView extends React.Component {
     lastProcessed: 230
   };
 
-  formatter = {
-    label: source => source.label,
-    sourceId: source => source.sourceId,
-    status: source => _.upperFirst(source.status),
-    solrShard: source => source.solrShard,
-    lastProcessed: source => source.lastProcessed,
+  const formatter = {
+    label: mdSource => mdSource.label,
+    sourceId: mdSource => mdSource.sourceId,
+    status: mdSource => upperFirst(mdSource.status),
+    solrShard: mdSource => mdSource.solrShard,
+    lastProcessed: mdSource => mdSource.lastProcessed,
   };
 
   // fade in/out of filter-pane
-  toggleFilterPane = () => {
-    this.setState(curState => ({
-      filterPaneIsVisible: !curState.filterPaneIsVisible,
-    }));
-  }
+  const toggleFilterPane = () => {
+    setFilterPaneIsVisible((curState) => !curState);
+  };
 
   // fade in / out the filter menu
-  renderResultsFirstMenu = (filters) => {
-    const { filterPaneIsVisible } = this.state;
+  const renderResultsFirstMenu = (filters) => {
     const filterCount = filters.string !== '' ? filters.string.split(',').length : 0;
     if (filterPaneIsVisible) {
       return null;
@@ -89,157 +98,139 @@ export default class SourcesView extends React.Component {
       <PaneMenu>
         <ExpandFilterPaneButton
           filterCount={filterCount}
-          onClick={this.toggleFilterPane}
+          onClick={toggleFilterPane}
         />
       </PaneMenu>
     );
-  }
+  };
 
   // counting records of result list
-  renderResultsPaneSubtitle = (source) => {
+  const renderResultsPaneSubtitle = () => {
     if (source) {
-      const count = source ? source.totalCount() : 0;
       return <FormattedMessage id="stripes-smart-components.searchResultsCountHeader" values={{ count }} />;
     }
 
     return <FormattedMessage id="stripes-smart-components.searchCriteria" />;
-  }
+  };
 
-  render() {
-    const { contentRef, data, onChangeIndex, onNeedMoreData, onSelectRow, queryGetter, querySetter, source, visibleColumns } = this.props;
-    const count = source ? source.totalCount() : 0;
-    const query = queryGetter() || {};
-    const sortOrder = query.sort || '';
-    const resultsStatusMessage = source ? (
-      <div data-test-find-source-no-results-message>
-        <NoResultsMessage
-          data-test-find-source-no-results-message
-          filterPaneIsVisible
-          searchTerm={query.query || ''}
-          source={source}
-          toggleFilterPane={_.noop}
-        />
-      </div>) : 'no source yet';
+  return (
+    <div data-test-sources ref={contentRef}>
+      <SearchAndSortQuery
+        initialFilterState={{ status: ['active', 'implementation'] }}
+        initialSearchState={{ query: '' }}
+        initialSortState={{ sort: 'label' }}
+        queryGetter={queryGetter}
+        querySetter={querySetter}
+        syncToLocationSearch={false}
+      >
+        {
+          ({
+            activeFilters,
+            filterChanged,
+            getFilterHandlers,
+            getSearchHandlers,
+            onSort,
+            onSubmitSearch,
+            resetAll,
+            searchValue,
+            searchChanged,
+          }) => {
+            const disableReset = () => (!filterChanged && !searchChanged);
 
-    return (
-      <div data-test-sources ref={contentRef}>
-        <SearchAndSortQuery
-          initialFilterState={{ status: ['active', 'implementation'] }}
-          initialSearchState={{ query: '' }}
-          initialSortState={{ sort: 'label' }}
-          queryGetter={queryGetter}
-          querySetter={querySetter}
-          syncToLocationSearch={false}
-        >
-          {
-            ({
-              activeFilters,
-              filterChanged,
-              getFilterHandlers,
-              getSearchHandlers,
-              onSort,
-              onSubmitSearch,
-              resetAll,
-              searchValue,
-              searchChanged,
-            }) => {
-              const disableReset = () => (!filterChanged && !searchChanged);
-
-              return (
-                <Paneset>
-                  {this.state.filterPaneIsVisible &&
-                    <Pane
-                      defaultWidth="20%"
-                      id="plugin-find-source-filter-pane"
-                      lastMenu={
-                        <PaneMenu>
-                          <CollapseFilterPaneButton
-                            onClick={this.toggleFilterPane}
-                          />
-                        </PaneMenu>
-                      }
-                      paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
-                    >
-                      <form onSubmit={onSubmitSearch}>
-                        <div className={css.searchGroupWrap}>
-                          <SearchField
-                            autoFocus
-                            id="sourceSearchField"
-                            inputRef={this.searchField}
-                            name="query"
-                            onChange={getSearchHandlers().query}
-                            onClear={getSearchHandlers().reset}
-                            value={searchValue.query}
-                            // add values for search-selectbox
-                            onChangeIndex={onChangeIndex}
-                            searchableIndexes={searchableIndexes}
-                            searchableIndexesPlaceholder={null}
-                            selectedIndex={_.get(this.props.data, 'qindex')}
-                          />
-                          <Button
-                            buttonStyle="primary"
-                            disabled={!searchValue.query || searchValue.query === ''}
-                            fullWidth
-                            id="sourceSubmitSearch"
-                            type="submit"
-                          >
-                            <FormattedMessage id="stripes-smart-components.search" />
-                          </Button>
-                        </div>
-                        <Button
-                          buttonStyle="none"
-                          disabled={disableReset()}
-                          id="clickable-reset-all"
-                          onClick={resetAll}
-                        >
-                          <Icon icon="times-circle-solid">
-                            <FormattedMessage id="stripes-smart-components.resetAll" />
-                          </Icon>
-                        </Button>
-                        <SourceFilters
-                          activeFilters={activeFilters.state}
-                          data={data}
-                          filterHandlers={getFilterHandlers()}
-                        />
-                      </form>
-                    </Pane>
-                  }
+            return (
+              <Paneset>
+                {filterPaneIsVisible &&
                   <Pane
-                    defaultWidth="fill"
-                    firstMenu={this.renderResultsFirstMenu(activeFilters)}
-                    padContent={false}
-                    paneTitle={<FormattedMessage id="ui-plugin-find-finc-metadata-source.modal.paneTitle" />}
-                    paneSub={this.renderResultsPaneSubtitle(source)}
+                    defaultWidth="20%"
+                    id="plugin-find-source-filter-pane"
+                    lastMenu={
+                      <PaneMenu>
+                        <CollapseFilterPaneButton
+                          onClick={toggleFilterPane}
+                        />
+                      </PaneMenu>
+                    }
+                    paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
                   >
-                    <MultiColumnList
-                      autosize
-                      columnMapping={this.columnMapping}
-                      columnWidths={this.columnWidths}
-                      contentData={data}
-                      formatter={this.formatter}
-                      id="list-sources"
-                      isEmptyMessage={resultsStatusMessage}
-                      onHeaderClick={onSort}
-                      onNeedMoreData={onNeedMoreData}
-                      onRowClick={onSelectRow}
-                      sortDirection={sortOrder.startsWith('-') ? 'descending' : 'ascending'}
-                      sortOrder={sortOrder.replace(/^-/, '').replace(/,.*/, '')}
-                      totalCount={count}
-                      virtualize
-                      visibleColumns={visibleColumns}
-                    />
+                    <form onSubmit={onSubmitSearch}>
+                      <div className={css.searchGroupWrap}>
+                        <SearchField
+                          autoFocus
+                          id="sourceSearchField"
+                          inputRef={searchField}
+                          name="query"
+                          onChange={getSearchHandlers().query}
+                          onClear={getSearchHandlers().reset}
+                          value={searchValue.query}
+                          // add values for search-selectbox
+                          onChangeIndex={onChangeIndex}
+                          searchableIndexes={searchableIndexes}
+                          searchableIndexesPlaceholder={null}
+                          selectedIndex={get(data, 'qindex')}
+                        />
+                        <Button
+                          buttonStyle="primary"
+                          disabled={!searchValue.query || searchValue.query === ''}
+                          fullWidth
+                          id="sourceSubmitSearch"
+                          type="submit"
+                        >
+                          <FormattedMessage id="stripes-smart-components.search" />
+                        </Button>
+                      </div>
+                      <Button
+                        buttonStyle="none"
+                        disabled={disableReset()}
+                        id="clickable-reset-all"
+                        onClick={resetAll}
+                      >
+                        <Icon icon="times-circle-solid">
+                          <FormattedMessage id="stripes-smart-components.resetAll" />
+                        </Icon>
+                      </Button>
+                      <SourceFilters
+                        activeFilters={activeFilters.state}
+                        data={data}
+                        filterHandlers={getFilterHandlers()}
+                      />
+                    </form>
                   </Pane>
-                </Paneset>
-              );
-            }
+                }
+                <Pane
+                  defaultWidth="fill"
+                  firstMenu={renderResultsFirstMenu(activeFilters)}
+                  padContent={false}
+                  paneTitle={<FormattedMessage id="ui-plugin-find-finc-metadata-source.modal.paneTitle" />}
+                  paneSub={renderResultsPaneSubtitle()}
+                >
+                  <MultiColumnList
+                    autosize
+                    columnMapping={columnMapping}
+                    columnWidths={columnWidths}
+                    contentData={data}
+                    formatter={formatter}
+                    id="list-sources"
+                    isEmptyMessage={resultsStatusMessage}
+                    onHeaderClick={onSort}
+                    onNeedMoreData={onNeedMoreData}
+                    onRowClick={onSelectRow}
+                    sortDirection={sortOrder.startsWith('-') ? 'descending' : 'ascending'}
+                    sortOrder={sortOrder.replace(/^-/, '').replace(/,.*/, '')}
+                    totalCount={count}
+                    virtualize
+                    visibleColumns={visibleColumns}
+                  />
+                </Pane>
+              </Paneset>
+            );
           }
-        </SearchAndSortQuery>
-      </div>
-    );
-  }
-}
+        }
+      </SearchAndSortQuery>
+    </div>
+  );
+};
 
-SourcesView.propTypes = Object.freeze({
+SourcesView.propTypes = {
   contentRef: PropTypes.object,
   data: PropTypes.arrayOf(PropTypes.object),
   onNeedMoreData: PropTypes.func,
@@ -247,8 +238,11 @@ SourcesView.propTypes = Object.freeze({
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
+  searchField: PropTypes.object,
   source: PropTypes.shape({
     totalCount: PropTypes.func
   }),
   visibleColumns: PropTypes.arrayOf(PropTypes.string)
-});
+};
+
+export default SourcesView;

@@ -1,19 +1,30 @@
 import { screen } from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
+
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import translationsProperties from '../test/jest/helpers/translationsProperties';
 import SourceSearch from './SourceSearch';
 
-jest.mock('./SourceSearchModal', () => {
-  return () => <span>SourceSearchModal</span>;
-});
+jest.mock('./SourceSearchModal', () => jest.fn(({ open, onClose }) => (
+  <div>
+    {open && (
+      <div>
+        <p>SourceSearchModal</p>
+        <button onClick={onClose} aria-label="Dismiss modal" type="button" />
+      </div>
+    )}
+  </div>
+)));
 
-const renderSourceSearch = (
-  renderTrigger,
-) => (
+const closeModal = jest.fn();
+const isOpen = true;
+
+const renderSourceSearch = (renderTrigger) => (
   renderWithIntl(
     <SourceSearch
       renderTrigger={renderTrigger}
+      onClose={closeModal}
+      open={isOpen}
     />,
     translationsProperties
   )
@@ -38,5 +49,13 @@ describe('SourceSearch component', () => {
     await user.click(screen.getByTestId('open-source-seach-modal-button'));
 
     expect(screen.getByText('SourceSearchModal')).toBeInTheDocument();
+  });
+
+  it('should call close modal', async () => {
+    renderSourceSearch();
+    const closeButton = screen.getByRole('button', { name: /Dismiss modal/i });
+    await user.click(closeButton);
+
+    expect(closeModal).toHaveBeenCalled();
   });
 });

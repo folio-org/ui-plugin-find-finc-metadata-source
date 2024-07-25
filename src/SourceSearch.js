@@ -1,101 +1,77 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import contains from 'dom-helpers/query/contains';
+import { useState, useRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
-  Icon
+  Icon,
 } from '@folio/stripes/components';
 
 import SourceSearchModal from './SourceSearchModal';
 
-class SourceSearch extends Component {
-  constructor(props) {
-    super(props);
+const SourceSearch = ({
+  buttonId = 'clickable-plugin-find-finc-metadata-source',
+  marginBottom0,
+  renderTrigger,
+  searchButtonStyle = 'primary noRightRadius',
+  searchLabel,
+  ...props
+}) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-    this.state = {
-      openModal: false,
-    };
+  const modalTrigger = useRef(null);
+  const modalRef = useRef(null);
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.modalTrigger = React.createRef();
-    this.modalRef = React.createRef();
-  }
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
 
-  openModal() {
-    this.setState({
-      openModal: true,
-    });
-  }
-
-  closeModal() {
-    this.setState({
-      openModal: false,
-    }, () => {
-      if (this.modalRef.current && this.modalTrigger.current) {
-        if (contains(this.modalRef.current, document.activeElement)) {
-          this.modalTrigger.current.focus();
+  const closeModal = () => {
+    setIsOpenModal(false, () => {
+      if (modalRef.current && modalTrigger.current) {
+        if (contains(modalRef.current, document.activeElement)) {
+          modalTrigger.current.focus();
         }
       }
     });
-  }
+  };
 
-  renderTriggerButton() {
-    const {
-      renderTrigger,
-    } = this.props;
-
+  const renderTriggerButton = () => {
     return renderTrigger({
-      buttonRef: this.modalTrigger,
-      onClick: this.openModal,
+      buttonRef: modalTrigger,
+      onClick: openModal,
     });
-  }
+  };
 
-  render() {
-    const {
-      buttonId,
-      marginBottom0,
-      renderTrigger,
-      searchButtonStyle,
-      searchLabel,
-    } = this.props;
-
-    return (
-      <>
-        {renderTrigger ?
-          this.renderTriggerButton() :
-          <FormattedMessage id="ui-plugin-find-finc-metadata-source.searchButton.title">
-            {ariaLabel => (
-              <Button
-                aria-label={ariaLabel}
-                buttonRef={this.modalTrigger}
-                buttonStyle={searchButtonStyle}
-                data-testid="open-source-seach-modal-button"
-                id={buttonId}
-                key="searchButton"
-                marginBottom0={marginBottom0}
-                onClick={this.openModal}
-              >
-                {searchLabel || <Icon icon="search" color="#fff" />}
-              </Button>
-            )}
-          </FormattedMessage>}
-        <SourceSearchModal
-          modalRef={this.modalRef}
-          onClose={this.closeModal}
-          open={this.state.openModal}
-          {...this.props}
-        />
-      </>
-    );
-  }
-}
-
-SourceSearch.defaultProps = {
-  buttonId: 'clickable-plugin-find-finc-metadata-source',
-  searchButtonStyle: 'primary noRightRadius',
+  return (
+    <>
+      {renderTrigger ?
+        renderTriggerButton() :
+        <FormattedMessage id="ui-plugin-find-finc-metadata-source.searchButton.title">
+          {ariaLabel => (
+            <Button
+              aria-label={ariaLabel}
+              buttonRef={modalTrigger}
+              buttonStyle={searchButtonStyle}
+              data-testid="open-source-seach-modal-button"
+              id={buttonId}
+              key="searchButton"
+              marginBottom0={marginBottom0}
+              onClick={openModal}
+            >
+              {searchLabel || <Icon icon="search" color="#fff" />}
+            </Button>
+          )}
+        </FormattedMessage>}
+      <SourceSearchModal
+        modalRef={modalRef}
+        onClose={closeModal}
+        open={isOpenModal}
+        {...props}
+      />
+    </>
+  );
 };
 
 SourceSearch.propTypes = {
