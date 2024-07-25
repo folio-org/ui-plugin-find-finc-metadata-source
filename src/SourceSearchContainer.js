@@ -51,6 +51,11 @@ const SourceSearchContainer = ({
     mutator.query.update({ qindex });
   };
 
+  // check if this block is still necessary
+  if (source) {
+    source.update({ resources, mutator }, 'metadataSources');
+  }
+
   return (
     <SourcesView
       data={sources}

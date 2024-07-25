@@ -57,15 +57,15 @@ describe('SourceSearchContainer component', () => {
     StripesConnectedSource.mockImplementation(() => mockSource);
   });
 
-  // it('should call the update method of source when resources or mutator changes', () => {
-  //   renderSourceSearchContainer();
+  it('should call the update method of source when resources or mutator changes', () => {
+    renderSourceSearchContainer();
 
-  //   // The source update is called during component render
-  //   expect(mockSource.update).toHaveBeenCalledWith(
-  //     expect.objectContaining({ resources, mutator }),
-  //     'metadataSources'
-  //   );
-  // });
+    // The source update is called during component render
+    expect(mockSource.update).toHaveBeenCalledWith(
+      expect.objectContaining({ resources, mutator }),
+      'metadataSources'
+    );
+  });
 
   it('should update the query when querySetter is called', () => {
     renderSourceSearchContainer();
