@@ -36,8 +36,6 @@ describe('SourceFilters component', () => {
     const clearImplementationStatusButton = implementationStatusFilter.querySelector('button[icon="times-circle-solid"]');
     expect(clearImplementationStatusButton).toBeInTheDocument();
 
-    screen.debug();
-
     await userEvent.click(clearImplementationStatusButton);
     expect(mockFilterHandlers.clearGroup).toHaveBeenCalledWith('status');
   });
