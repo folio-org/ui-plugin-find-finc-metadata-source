@@ -1,16 +1,16 @@
 {
     "meta.title": "plugin-find-finc-metadata-source",
-    "modal.label": "Select metadata source",
-    "searchButton.title": "Find metadata source",
-    "modal.paneTitle": "Metadata sources",
-    "label": "Name",
+    "modal.label": "Bron metadata selecteren",
+    "searchButton.title": "Bron metadata zoeken",
+    "modal.paneTitle": "Metadata-verzamelingen",
+    "label": "Naam",
     "id": "ID",
-    "status": "Implementation status",
+    "status": "Status van implementatie",
     "solrShard": "Solar shard",
-    "lastProcessed": "Last processed",
-    "filterValue.active": "Active",
-    "filterValue.request": "Request",
-    "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Closed",
-    "filterValue.impossible": "Impossible"
+    "lastProcessed": "Laatst verwerkt",
+    "filterValue.active": "Actief",
+    "filterValue.request": "Aanvraag",
+    "filterValue.implementation": "Uitvoering",
+    "filterValue.closed": "Gesloten",
+    "filterValue.impossible": "Onmogelijk"
 }
