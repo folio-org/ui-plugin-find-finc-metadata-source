@@ -121,6 +121,7 @@ const SourcesView = ({
         initialSortState={{ sort: 'label' }}
         queryGetter={queryGetter}
         querySetter={querySetter}
+        setQueryOnMount
         syncToLocationSearch={false}
       >
         {
@@ -159,7 +160,13 @@ const SourcesView = ({
                           id="sourceSearchField"
                           inputRef={searchField}
                           name="query"
-                          onChange={getSearchHandlers().query}
+                          onChange={(e) => {
+                            if (e.target.value) {
+                              getSearchHandlers().query(e);
+                            } else {
+                              getSearchHandlers().reset();
+                            }
+                          }}
                           onClear={getSearchHandlers().reset}
                           value={searchValue.query}
                           // add values for search-selectbox
