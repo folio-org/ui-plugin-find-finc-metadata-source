@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
-## 7.0.0 (IN PROGRESS)
+## 7.1.0 (IN PROGRESS)
+
+## [7.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v7.0.0) (2024-11-04)
 * Use functional components instead of class components ([UIFC-363](https://folio-org.atlassian.net/browse/UIFC-363))
 * Remove dependency to stripes-acq-components, use mocks local ([UIFC-369](https://folio-org.atlassian.net/browse/UIFC-369))
 * Fix GitHub Actions workflow not running for tags ([FOLIO-4086](https://folio-org.atlassian.net/browse/FOLIO-4086))
