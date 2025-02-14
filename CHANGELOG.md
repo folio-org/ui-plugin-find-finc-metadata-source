@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
-## 7.1.0 (IN PROGRESS)
+## 8.0.0 (IN PROGRESS)
+* Migrate react-intl to v7 ([UIFC-415](https://folio-org.atlassian.net/browse/UIFC-415))
 
 ## [7.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v7.0.0) (2024-11-04)
 * Use functional components instead of class components ([UIFC-363](https://folio-org.atlassian.net/browse/UIFC-363))
