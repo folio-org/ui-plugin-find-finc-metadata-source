@@ -9,6 +9,7 @@
 * Fix GitHub Actions workflow not running for tags ([FOLIO-4086](https://folio-org.atlassian.net/browse/FOLIO-4086))
 * Deleting search string via keyboard does not update search results ([UIFC-357](https://folio-org.atlassian.net/browse/UIFC-357))
 * Update required interfaces ([UIFC-385](https://folio-org.atlassian.net/browse/UIFC-385))
+* Migrate stripes dependencies to their Sunflower versions ([UIFC-414](https://folio-org.atlassian.net/browse/UIFC-414))
 
 ## [6.1.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v6.1.0) (2024-03-20)
 * Translation updates
