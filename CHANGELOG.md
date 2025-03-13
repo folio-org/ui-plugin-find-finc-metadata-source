@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-finc-metadata-source
 
-## 8.0.0 (IN PROGRESS)
+## 8.1.0 (IN PROGRESS)
+
+## [8.0.0](https://github.com/folio-org/ui-plugin-find-finc-metadata-source/tree/v8.0.0) (2025-03-13)
 * Migrate react-intl to v7 ([UIFC-415](https://folio-org.atlassian.net/browse/UIFC-415))
 * Migrate stripes dependencies to their Sunflower versions ([UIFC-414](https://folio-org.atlassian.net/browse/UIFC-414))
 
