@@ -8,9 +8,9 @@
     "status": "Стан впровадження",
     "solrShard": "Solr shard",
     "lastProcessed": "Остання обробка",
-    "filterValue.active": "Active",
-    "filterValue.request": "Request",
-    "filterValue.implementation": "Implementation",
-    "filterValue.closed": "Closed",
-    "filterValue.impossible": "Impossible"
+    "filterValue.active": "Активно",
+    "filterValue.request": "Замовлення",
+    "filterValue.implementation": "Впровадження",
+    "filterValue.closed": "Закрито",
+    "filterValue.impossible": "Неможливо"
 }
