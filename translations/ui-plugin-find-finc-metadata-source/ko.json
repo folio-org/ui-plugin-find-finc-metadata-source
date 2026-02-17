@@ -3,7 +3,7 @@
     "modal.label": "메타데이터 소스 선택",
     "searchButton.title": "메타데이터 소스 찾기",
     "modal.paneTitle": "Metadata sources",
-    "label": "Name",
+    "label": "이름",
     "id": "ID",
     "status": "Implementation status",
     "solrShard": "Solar shard",
