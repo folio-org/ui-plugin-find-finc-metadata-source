@@ -5,7 +5,7 @@
     "modal.paneTitle": "Metadata sources",
     "label": "Name",
     "id": "ID",
-    "status": "Implementation status",
+    "status": "สถานะ",
     "solrShard": "Solar shard",
     "lastProcessed": "Last processed",
     "filterValue.active": "Active",
