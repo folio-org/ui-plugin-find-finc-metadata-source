@@ -9,7 +9,7 @@
     "solrShard": "Solr shard",
     "lastProcessed": "Остання обробка",
     "filterValue.active": "Активно",
-    "filterValue.request": "Замовлення",
+    "filterValue.request": "Замовлення (від користувача)",
     "filterValue.implementation": "Впровадження",
     "filterValue.closed": "Закрито",
     "filterValue.impossible": "Неможливо"
