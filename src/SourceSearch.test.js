@@ -10,7 +10,7 @@ jest.mock('./SourceSearchModal', () => jest.fn(({ open, onClose }) => (
     {open && (
       <div>
         <p>SourceSearchModal</p>
-        <button onClick={onClose} aria-label="Dismiss modal" type="button" />
+        <button aria-label="Dismiss modal" onClick={onClose} type="button" />
       </div>
     )}
   </div>
@@ -22,9 +22,9 @@ const isOpen = true;
 const renderSourceSearch = (renderTrigger) => (
   renderWithIntl(
     <SourceSearch
-      renderTrigger={renderTrigger}
       onClose={closeModal}
       open={isOpen}
+      renderTrigger={renderTrigger}
     />,
     translationsProperties
   )

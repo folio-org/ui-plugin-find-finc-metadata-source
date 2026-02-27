@@ -1,6 +1,9 @@
-import PropTypes from 'prop-types';
 import { get } from 'lodash';
-import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import {
+  useEffect,
+  useRef,
+} from 'react';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -8,8 +11,8 @@ import {
   StripesConnectedSource,
 } from '@folio/stripes/smart-components';
 
-import SourcesView from './SourcesView';
 import filterConfig from './filterConfigData';
+import SourcesView from './SourcesView';
 
 const INITIAL_RESULT_COUNT = 100;
 const RESULT_COUNT_INCREMENT = 100;
@@ -84,11 +87,11 @@ SourceSearchContainer.manifest = Object.freeze({
           'cql.allRecords=1',
           '(label="%{query.query}*" or sourceId="%{query.query}*")',
           {
-            'label': 'label',
-            'sourceId': 'sourceId/number'
+            label: 'label',
+            sourceId: 'sourceId/number',
           },
           filterConfig,
-          2,
+          2
         ),
       },
       staticFallback: { params: {} },
@@ -98,8 +101,8 @@ SourceSearchContainer.manifest = Object.freeze({
     initialValue: {
       query: '',
       filters: 'status.active,status.implementation',
-      sort: ''
-    }
+      sort: '',
+    },
   },
   resultCount: { initialValue: INITIAL_RESULT_COUNT },
 });
