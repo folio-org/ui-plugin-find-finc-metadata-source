@@ -8,7 +8,7 @@ import SourceSearchModal from './SourceSearchModal';
 jest.mock('./SourceSearchContainer', () => {
   return ({ onSelectRow }) => (
     <>
-      <button type="button" onClick={() => onSelectRow({}, {})}>
+      <button onClick={() => onSelectRow({}, {})} type="button">
         SelectSource
       </button>
     </>
@@ -22,11 +22,10 @@ const renderSourceSearchModal = (
   open = true,
   onClose = onCloseModal,
   selectSource = onSelectSource
-) =>
-  renderWithIntl(
-    <SourceSearchModal selectSource={selectSource} onClose={onClose} open={open} />,
-    translationsProperties
-  );
+) => renderWithIntl(
+  <SourceSearchModal onClose={onClose} open={open} selectSource={selectSource} />,
+  translationsProperties
+);
 
 describe('SourceSearchModal component', () => {
   it('should display source search modal', () => {

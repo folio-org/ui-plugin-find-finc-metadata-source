@@ -30,19 +30,18 @@ const ARRAY_SOURCE = [
 const onChangeIndex = jest.fn();
 const onSubmit = jest.fn();
 
-const renderSourcesView = (metadataSource = ARRAY_SOURCE, queryGetter = noop, querySetter = noop) =>
-  renderWithIntl(
-    <Router>
-      <SourcesView
-        data={metadataSource}
-        queryGetter={queryGetter}
-        querySetter={querySetter}
-        onChangeIndex={onChangeIndex}
-        onSubmit={onSubmit}
-      />
-    </Router>,
-    translationsProperties
-  );
+const renderSourcesView = (metadataSource = ARRAY_SOURCE, queryGetter = noop, querySetter = noop) => renderWithIntl(
+  <Router>
+    <SourcesView
+      data={metadataSource}
+      onChangeIndex={onChangeIndex}
+      onSubmit={onSubmit}
+      queryGetter={queryGetter}
+      querySetter={querySetter}
+    />
+  </Router>,
+  translationsProperties
+);
 
 describe('SourceView', () => {
   beforeEach(() => {
