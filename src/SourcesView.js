@@ -1,5 +1,9 @@
+import {
+  get,
+  noop,
+  upperFirst,
+} from 'lodash';
 import PropTypes from 'prop-types';
-import { get, noop, upperFirst } from 'lodash';
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
@@ -15,8 +19,8 @@ import {
 import {
   CollapseFilterPaneButton,
   ExpandFilterPaneButton,
-  SearchAndSortQuery,
   SearchAndSortNoResultsMessage as NoResultsMessage,
+  SearchAndSortQuery,
 } from '@folio/stripes/smart-components';
 
 import SourceFilters from './SourceFilters';
@@ -25,7 +29,7 @@ import css from './SourceSearch.css';
 const searchableIndexes = [
   { label: 'All', value: '', makeQuery: term => `(label="${term}*" or sourceId="${term}*")` },
   { label: 'Source Name', value: 'label', makeQuery: term => `(label="${term}*")` },
-  { label: 'Source ID', value: 'sourceId', makeQuery: term => `(sourceId="${term}*")` }
+  { label: 'Source ID', value: 'sourceId', makeQuery: term => `(sourceId="${term}*")` },
 ];
 
 const SourcesView = ({
@@ -71,7 +75,7 @@ const SourcesView = ({
     sourceId: 50,
     status: 200,
     solrShard: 150,
-    lastProcessed: 230
+    lastProcessed: 230,
   };
 
   const formatter = {
@@ -90,6 +94,7 @@ const SourcesView = ({
   // fade in / out the filter menu
   const renderResultsFirstMenu = (filters) => {
     const filterCount = filters.string !== '' ? filters.string.split(',').length : 0;
+
     if (filterPaneIsVisible) {
       return null;
     }
@@ -114,7 +119,7 @@ const SourcesView = ({
   };
 
   return (
-    <div data-test-sources ref={contentRef}>
+    <div ref={contentRef} data-test-sources>
       <SearchAndSortQuery
         initialFilterState={{ status: ['active', 'implementation'] }}
         initialSearchState={{ query: '' }}
@@ -167,13 +172,13 @@ const SourcesView = ({
                               getSearchHandlers().reset();
                             }
                           }}
-                          onClear={getSearchHandlers().reset}
-                          value={searchValue.query}
-                          // add values for search-selectbox
                           onChangeIndex={onChangeIndex}
+                          onClear={getSearchHandlers().reset}
+                          // add values for search-selectbox
                           searchableIndexes={searchableIndexes}
                           searchableIndexesPlaceholder={null}
                           selectedIndex={get(data, 'qindex')}
+                          value={searchValue.query}
                         />
                         <Button
                           buttonStyle="primary"
@@ -207,8 +212,8 @@ const SourcesView = ({
                   defaultWidth="fill"
                   firstMenu={renderResultsFirstMenu(activeFilters)}
                   padContent={false}
-                  paneTitle={<FormattedMessage id="ui-plugin-find-finc-metadata-source.modal.paneTitle" />}
                   paneSub={renderResultsPaneSubtitle()}
+                  paneTitle={<FormattedMessage id="ui-plugin-find-finc-metadata-source.modal.paneTitle" />}
                 >
                   <MultiColumnList
                     autosize
@@ -240,16 +245,16 @@ const SourcesView = ({
 SourcesView.propTypes = {
   contentRef: PropTypes.object,
   data: PropTypes.arrayOf(PropTypes.object),
-  onNeedMoreData: PropTypes.func,
   onChangeIndex: PropTypes.func,
+  onNeedMoreData: PropTypes.func,
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
   searchField: PropTypes.object,
   source: PropTypes.shape({
-    totalCount: PropTypes.func
+    totalCount: PropTypes.func,
   }),
-  visibleColumns: PropTypes.arrayOf(PropTypes.string)
+  visibleColumns: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default SourcesView;

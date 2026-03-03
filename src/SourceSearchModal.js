@@ -4,8 +4,8 @@ import { injectIntl } from 'react-intl';
 
 import { Modal } from '@folio/stripes/components';
 
-import SourceSearchContainer from './SourceSearchContainer';
 import css from './SourceSearch.css';
+import SourceSearchContainer from './SourceSearchContainer';
 
 const SourceSearchModal = ({
   modalRef,
@@ -25,12 +25,12 @@ const SourceSearchModal = ({
 
   return (
     <Modal
+      ref={internalModalRef}
       contentClass={css.modalContent}
       dismissible
       label={intl.formatMessage({ id: 'ui-plugin-find-finc-metadata-source.modal.label' })}
       onClose={onClose}
       open={open}
-      ref={internalModalRef}
       size="large"
     >
       <SourceSearchContainer
@@ -42,13 +42,13 @@ const SourceSearchModal = ({
 };
 
 SourceSearchModal.propTypes = {
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }),
   modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool,
   selectSource: PropTypes.func,
-  intl: PropTypes.shape({
-    formatMessage: PropTypes.func.isRequired,
-  }),
 };
 
 export default injectIntl(SourceSearchModal);

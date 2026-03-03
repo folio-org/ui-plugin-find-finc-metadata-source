@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -35,8 +38,8 @@ const SourceFilters = ({
       values.forEach((key) => {
         let newValue = {};
         newValue = {
-          'value': key.cql,
-          'label': key.name,
+          value: key.cql,
+          label: key.name,
         };
         newValues.push(newValue);
       });
@@ -51,7 +54,7 @@ const SourceFilters = ({
     if (Object.keys(newState).length) {
       setFiltersState(prevState => ({
         ...prevState,
-        ...newState
+        ...newState,
       }));
     }
   }, [filtersState]);

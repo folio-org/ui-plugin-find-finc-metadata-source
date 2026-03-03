@@ -1,6 +1,9 @@
-import PropTypes from 'prop-types';
 import contains from 'dom-helpers/query/contains';
-import { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
+import {
+  useRef,
+  useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -51,16 +54,16 @@ const SourceSearch = ({
         <FormattedMessage id="ui-plugin-find-finc-metadata-source.searchButton.title">
           {ariaLabel => (
             <Button
+              key="searchButton"
               aria-label={ariaLabel}
               buttonRef={modalTrigger}
               buttonStyle={searchButtonStyle}
               data-testid="open-source-seach-modal-button"
               id={buttonId}
-              key="searchButton"
               marginBottom0={marginBottom0}
               onClick={openModal}
             >
-              {searchLabel || <Icon icon="search" color="#fff" />}
+              {searchLabel || <Icon color="#fff" icon="search" />}
             </Button>
           )}
         </FormattedMessage>}

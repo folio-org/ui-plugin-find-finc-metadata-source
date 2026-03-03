@@ -8,26 +8,26 @@ jest.mock('./SourcesView', () => jest.fn(() => null));
 
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
-  StripesConnectedSource: jest.fn()
+  StripesConnectedSource: jest.fn(),
 }));
 
 const mutator = {
   query: {
     update: jest.fn(),
-  }
+  },
 };
 
 const resources = {
   metadataSources: {
-    records: []
+    records: [],
   },
-  query: {}
+  query: {},
 };
 
 const stripes = {
   logger: {
-    log: jest.fn()
-  }
+    log: jest.fn(),
+  },
 };
 
 const onChangeIndex = jest.fn();
@@ -40,7 +40,7 @@ const renderSourceSearchContainer = (props = {}) => (render(
     resources={resources}
     stripes={stripes}
     {...props}
-  />,
+  />
 ));
 
 describe('SourceSearchContainer component', () => {
@@ -51,7 +51,7 @@ describe('SourceSearchContainer component', () => {
 
     mockSource = {
       update: jest.fn(),
-      fetchMore: jest.fn()
+      fetchMore: jest.fn(),
     };
 
     StripesConnectedSource.mockImplementation(() => mockSource);
@@ -100,7 +100,7 @@ describe('SourceSearchContainer component', () => {
   it('should return the query from resources when queryGetter is called', () => {
     const customResources = {
       ...resources,
-      query: { query: 'test' }
+      query: { query: 'test' },
     };
 
     renderSourceSearchContainer({ resources: customResources });

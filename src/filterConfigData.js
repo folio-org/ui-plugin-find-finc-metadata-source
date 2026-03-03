@@ -7,9 +7,12 @@ const filterConfig = [
     values: [
       { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.active" />, cql: 'active' },
       { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.request" />, cql: 'request' },
-      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.implementation" />, cql: 'implementation' },
+      {
+        name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.implementation" />,
+        cql: 'implementation',
+      },
       { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.closed" />, cql: 'closed' },
-      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.impossible" />, cql: 'impossible' }
+      { name: <FormattedMessage id="ui-plugin-find-finc-metadata-source.filterValue.impossible" />, cql: 'impossible' },
     ],
   },
   {
@@ -19,9 +22,9 @@ const filterConfig = [
       { name: 'UBL main', cql: 'UBL main' },
       { name: 'UBL ai', cql: 'UBL ai' },
       { name: 'SLUB main', cql: 'SLUB main' },
-      { name: 'SLUB DBoD', cql: 'SLUB DBoD' }
+      { name: 'SLUB DBoD', cql: 'SLUB DBoD' },
     ],
-  }
+  },
 ];
 
 export default filterConfig;

@@ -1,4 +1,7 @@
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 
 import SourceFilters from './SourceFilters';
@@ -16,7 +19,7 @@ const renderSourceFilter = () => (
         solrShard: [],
       }}
       filterHandlers={mockFilterHandlers}
-    />,
+    />
   )
 );
 
@@ -33,7 +36,8 @@ describe('SourceFilters component', () => {
     const implementationStatusFilter = document.querySelector('#filter-accordion-status');
     expect(implementationStatusFilter).toBeInTheDocument();
 
-    const clearImplementationStatusButton = implementationStatusFilter.querySelector('button[icon="times-circle-solid"]');
+    const clearImplementationStatusButton =
+      implementationStatusFilter.querySelector('button[icon="times-circle-solid"]');
     expect(clearImplementationStatusButton).toBeInTheDocument();
 
     await userEvent.click(clearImplementationStatusButton);
