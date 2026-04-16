@@ -11,6 +11,6 @@
     "filterValue.active": "有効",
     "filterValue.request": "リクエスト",
     "filterValue.implementation": "インプリメンテーション",
-    "filterValue.closed": "完了",
+    "filterValue.closed": "クローズ",
     "filterValue.impossible": "不可能"
 }
